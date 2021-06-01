@@ -130,7 +130,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IGelirDal.cs" />
     <Compile Include="Abstract\IKullaniciDal.cs" />
+    <Compile Include="Concrete\EfGelirDal.cs" />
     <Compile Include="Concrete\EfKullaniciDal.cs" />
     <Compile Include="EntityFramework\EntityRepositoryBase.cs" />
     <Compile Include="EntityFramework\IEntityRepository.cs" />

@@ -44,7 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IGelirService.cs" />
     <Compile Include="Abstract\IKullaniciService.cs" />
+    <Compile Include="Concrete\GelirManager.cs" />
     <Compile Include="Concrete\KullaniciManager.cs" />
     <Compile Include="DependecyResolvers\Ninject\BusinessModule.cs" />
     <Compile Include="DependecyResolvers\Ninject\InstanceFactory.cs" />
