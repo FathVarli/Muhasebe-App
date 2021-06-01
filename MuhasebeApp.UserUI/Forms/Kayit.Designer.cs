@@ -97,7 +97,6 @@ namespace MuhasebeApp.UserUI.Forms
             this.txtSoyad.Name = "txtSoyad";
             this.txtSoyad.Size = new System.Drawing.Size(140, 20);
             this.txtSoyad.TabIndex = 10;
-            this.txtSoyad.Visible = false;
             // 
             // txtAd
             // 
