@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Entity.Concrete;
+using Microsoft.EntityFrameworkCore;
 using MuhasebeApp.Entity.Concrete;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,8 @@ namespace MuhasebeApp.DataAccess.EntityFramework
 
         }
 
-        public DbSet<Kullanici> Giders { get; set; }
+        public DbSet<Kullanici> Kullanicis { get; set; }
+        public DbSet<Gelir> Gelirs { get; set; }
 
     }
 }

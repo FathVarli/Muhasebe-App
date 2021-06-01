@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Concrete\Gelir.cs" />
     <Compile Include="Concrete\Kullanici.cs" />
     <Compile Include="Dto\LoginDto.cs" />
     <Compile Include="Dto\RegisterDto.cs" />
