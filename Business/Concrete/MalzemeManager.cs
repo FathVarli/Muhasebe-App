@@ -53,7 +53,7 @@ namespace Business.Concrete
             Malzeme existMalzeme = _malzemeDal.Get(m => m.Id == id);
             if (existMalzeme == null)
             {
-                return new ErrorDataResult<Malzeme>("Silinecek malzeme bulunamadı!");
+                return new ErrorDataResult<Malzeme>("Malzeme bulunamadı!");
             }
             return new SuccessDataResult<Malzeme>(existMalzeme);
         }

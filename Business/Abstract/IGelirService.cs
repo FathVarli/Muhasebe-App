@@ -10,7 +10,10 @@ namespace Business.Abstract
 {
     public interface IGelirService
     {
-        IResult AddGelir(Gelir gelir);
+        IResult Add(Gelir gelir);
+        IResult DeleteById(int id);
+        IResult UpdateById(int id, Gelir gelir);
         IDataResult<Gelir> GetById(int id);
+        IDataResult<List<Gelir>> getAll();
     }
 }
