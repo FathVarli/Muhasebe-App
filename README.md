@@ -7,7 +7,6 @@ Muhasebe App application with Asp.Net Core Form Application and EntityFramework
 | frontend  | Asp.net Form Application  |
 | ORM  | Entity Framework 6.4.0 with code first |
 | db  | Postgresql  |
-| Signing | Cookie Authentication |
 | DI  | Ninject 3.1.4   |
 
 
