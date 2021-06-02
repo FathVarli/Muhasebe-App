@@ -131,9 +131,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IGelirDal.cs" />
+    <Compile Include="Abstract\IGiderDal.cs" />
     <Compile Include="Abstract\IKullaniciDal.cs" />
+    <Compile Include="Abstract\IMalzemeDal.cs" />
     <Compile Include="Concrete\EfGelirDal.cs" />
+    <Compile Include="Concrete\EfGiderDal.cs" />
     <Compile Include="Concrete\EfKullaniciDal.cs" />
+    <Compile Include="Concrete\EfMalzemeDal.cs" />
     <Compile Include="EntityFramework\EntityRepositoryBase.cs" />
     <Compile Include="EntityFramework\IEntityRepository.cs" />
     <Compile Include="EntityFramework\PgDbContext.cs" />

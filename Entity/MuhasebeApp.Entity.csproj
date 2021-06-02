@@ -43,7 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Concrete\Gelir.cs" />
+    <Compile Include="Concrete\Gider.cs" />
     <Compile Include="Concrete\Kullanici.cs" />
+    <Compile Include="Concrete\Malzeme.cs" />
     <Compile Include="Dto\LoginDto.cs" />
     <Compile Include="Dto\RegisterDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

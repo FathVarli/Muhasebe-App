@@ -18,6 +18,8 @@ namespace MuhasebeApp.DataAccess.EntityFramework
 
         public DbSet<Kullanici> Kullanicis { get; set; }
         public DbSet<Gelir> Gelirs { get; set; }
+        public DbSet<Gider> Giders { get; set; }
+        public DbSet<Malzeme> Malzmes { get; set; }
 
     }
 }

@@ -1,4 +1,6 @@
-﻿using DataAccess.Abstract;
+﻿using Business.Abstract;
+using Business.Concrete;
+using DataAccess.Abstract;
 using DataAccess.Concrete;
 using MuhasebeApp.Business.Abstract;
 using MuhasebeApp.Business.Concrete;
@@ -16,13 +18,21 @@ namespace MuhasebeApp.Business.DependecyResolvers.Ninject
         public override void Load()
         {
             // Burası data access layer "Dal"
-           Bind<IKullaniciDal>().To<EfKullaniciDal>().InSingletonScope();
-           Bind<IGelirDal>().To<EfGelirDal>().InSingletonScope();
+            Bind<IKullaniciDal>().To<EfKullaniciDal>().InSingletonScope();
+            Bind<IGelirDal>().To<EfGelirDal>().InSingletonScope();
+            Bind<IGiderDal>().To<EfGiderDal>().InSingletonScope();
+            Bind<IMalzemeDal>().To<EfMalzemeDal>().InSingletonScope();
 
             // Burası business serviseler için
-           Bind<IKullaniciService>().To<KullaniciManager>().InSingletonScope();
+            Bind<IKullaniciService>().To<KullaniciManager>().InSingletonScope();
+            Bind<IGiderService>().To<GiderManager>().InSingletonScope();
+            Bind<IGelirService>().To<GelirManager>().InSingletonScope();
+            Bind<IMalzemeService>().To<MalzemeManager>().InSingletonScope();
 
-           
+
+
+
+
 
         }
 
