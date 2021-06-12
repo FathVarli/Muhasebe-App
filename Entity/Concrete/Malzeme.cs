@@ -21,5 +21,8 @@ namespace Entity.Concrete
         [Column("birim")]
         [MaxLength(250)]
         public string Birim { get; set; }
+        [Column("birim_fiyat")]
+        public decimal BirimFiyat { get; set; }
+
     }
 }

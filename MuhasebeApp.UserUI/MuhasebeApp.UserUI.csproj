@@ -128,6 +128,7 @@
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -139,11 +140,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\GelirEkleme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GelirEkleme.Designer.cs">
+      <DependentUpon>GelirEkleme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GelirListeleme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GelirListeleme.Designer.cs">
+      <DependentUpon>GelirListeleme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GiderEkleme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GiderEkleme.Designer.cs">
+      <DependentUpon>GiderEkleme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GiderListeleme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GiderListeleme.Designer.cs">
+      <DependentUpon>GiderListeleme.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Giris.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Giris.Designer.cs">
       <DependentUpon>Giris.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\HomePage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HomePage.Designer.cs">
+      <DependentUpon>HomePage.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Kayit.cs">
       <SubType>Form</SubType>
@@ -151,13 +182,37 @@
     <Compile Include="Forms\Kayit.Designer.cs">
       <DependentUpon>Kayit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MalzemeEkleme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MalzemeEkleme.Designer.cs">
+      <DependentUpon>MalzemeEkleme.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\GelirEkleme.resx">
+      <DependentUpon>GelirEkleme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GelirListeleme.resx">
+      <DependentUpon>GelirListeleme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GiderEkleme.resx">
+      <DependentUpon>GiderEkleme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GiderListeleme.resx">
+      <DependentUpon>GiderListeleme.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Giris.resx">
       <DependentUpon>Giris.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HomePage.resx">
+      <DependentUpon>HomePage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Kayit.resx">
       <DependentUpon>Kayit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MalzemeEkleme.resx">
+      <DependentUpon>MalzemeEkleme.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

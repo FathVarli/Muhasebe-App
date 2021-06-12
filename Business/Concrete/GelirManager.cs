@@ -13,6 +13,7 @@ namespace Business.Concrete
     public class GelirManager : IGelirService
     {
         IGelirDal _gelirDal;
+        IMalzemeService malzemeService;
         public GelirManager(IGelirDal gelirDal)
         {
             _gelirDal = gelirDal;
@@ -20,6 +21,7 @@ namespace Business.Concrete
 
         public IResult Add(Gelir gelir)
         {
+
             _gelirDal.Add(gelir);
             return new SuccessResult("Gelir başarıyla eklendi.");
         }
