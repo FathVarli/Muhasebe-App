@@ -1,6 +1,8 @@
 ﻿using Business.Abstract;
+using Core.Utils.Helper;
 using DataAccess.Abstract;
 using Entity.Concrete;
+using Entity.Dto;
 using MuhasebeApp.Core.Utils.Results;
 using System;
 using System.Collections.Generic;
@@ -13,10 +15,11 @@ namespace Business.Concrete
     public class GelirManager : IGelirService
     {
         IGelirDal _gelirDal;
-        IMalzemeService malzemeService;
-        public GelirManager(IGelirDal gelirDal)
+        IMalzemeDal _malzemeDal;
+        public GelirManager(IGelirDal gelirDal, IMalzemeDal malzemeDal)
         {
             _gelirDal = gelirDal;
+            _malzemeDal = malzemeDal;
         }
 
         public IResult Add(Gelir gelir)
@@ -37,9 +40,37 @@ namespace Business.Concrete
             return new SuccessResult("Gelir başarıyla silindi.");
         }
 
-        public IDataResult<List<Gelir>> getAll()
+        public IDataResult<List<Gelir>> GetAll()
         {
             return new SuccessDataResult<List<Gelir>>(_gelirDal.GetList());
+        }
+
+        public IDataResult<List<Gelir>> GetAllByFilter(GelirFilterDto gelirFilter)
+        {
+            var predicate = PredicateBuilder.True<Gelir>();
+
+
+            if (gelirFilter.MalzemeId > 0)
+            {
+                predicate = predicate.And(p => p.MalzemeId == gelirFilter.MalzemeId);
+            }
+            if (!string.IsNullOrEmpty(gelirFilter.OdemeSekli))
+            {
+                predicate = predicate.And(p => p.OdemeSekli == gelirFilter.OdemeSekli);
+            }
+            if (gelirFilter.StartDate != null && gelirFilter.EndDate != null)
+            {
+                //gelirFilter.StartDate += "23:59";
+                //gelirFilter.EndDate += "00:00";
+
+                //string query = string.Format("SELECT * FROM gelir WHERE tarih >= '{0}' AND tarih <= '{1}'", gelirFilter.StartDate, gelirFilter.EndDate);
+                //List<int> list = _gelirDal.GetListQuery(query);
+
+                predicate = predicate.And(p => p.Tarih >= gelirFilter.StartDate && p.Tarih <= gelirFilter.EndDate);
+            }
+
+            var gelirList = _gelirDal.GetList(predicate);
+            return new SuccessDataResult<List<Gelir>>(gelirList);
         }
 
         public IDataResult<Gelir> GetById(int id)
@@ -71,10 +102,15 @@ namespace Business.Concrete
             {
                 existGelir.Tarih = gelir.Tarih;
             }
-            //if (gelir.MalzemeId)
-            //{
-
-            //}
+            if (gelir.MalzemeId > 0)
+            {
+                var existMalzeme =_malzemeDal.Get(m => m.Id == gelir.MalzemeId);
+                if (existMalzeme == null)
+                {
+                    return new ErrorResult("Malzeme bulunamadı.");
+                }
+                existGelir.MalzemeId = gelir.MalzemeId;
+            }
             if (gelir.Adet > 0)
             {
                 existGelir.Adet = gelir.Adet;

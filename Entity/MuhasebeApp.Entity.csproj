@@ -46,8 +46,15 @@
     <Compile Include="Concrete\Gider.cs" />
     <Compile Include="Concrete\Kullanici.cs" />
     <Compile Include="Concrete\Malzeme.cs" />
+    <Compile Include="Concrete\V_Malzeme_Chart.cs" />
+    <Compile Include="Dto\GelirFilterDto.cs" />
+    <Compile Include="Dto\GiderFilterDto.cs" />
     <Compile Include="Dto\LoginDto.cs" />
+    <Compile Include="Dto\MalzemeChartDto.cs" />
     <Compile Include="Dto\RegisterDto.cs" />
+    <Compile Include="Dto\ToplamGelirGiderDto.cs" />
+    <Compile Include="Dto\YillikChartToplamGelirGiderDto.cs" />
+    <Compile Include="Enum\EnmOdemeSekli.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

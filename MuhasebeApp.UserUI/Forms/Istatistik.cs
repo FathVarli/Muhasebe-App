@@ -10,17 +10,13 @@ using System.Windows.Forms;
 
 namespace MuhasebeApp.UserUI.Forms
 {
-    public partial class HomePage : Form
+    public partial class Istatistik : Form
     {
-        public HomePage()
+        public Istatistik()
         {
             InitializeComponent();
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            lblSaat.Text = DateTime.Now.ToLongTimeString();
-            lblTarih.Text = DateTime.Now.ToLongDateString();
-        }
+      
     }
 }

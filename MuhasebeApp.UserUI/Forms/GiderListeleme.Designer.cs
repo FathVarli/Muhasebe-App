@@ -42,13 +42,13 @@ namespace MuhasebeApp.UserUI.Forms
             this.lblIcerik = new System.Windows.Forms.Label();
             this.gbxFiltreleme = new System.Windows.Forms.GroupBox();
             this.btnAra = new System.Windows.Forms.Button();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
-            this.lblBitişTarihi = new System.Windows.Forms.Label();
-            this.lblFBaslangicTarihi = new System.Windows.Forms.Label();
-            this.lblFTarihAralik = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.lblFIcerik = new System.Windows.Forms.Label();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.lblFTarihAralik = new System.Windows.Forms.Label();
+            this.lblFBaslangicTarihi = new System.Windows.Forms.Label();
+            this.lblBitişTarihi = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGiderListeleme)).BeginInit();
             this.gbxGiderEkleme.SuspendLayout();
             this.gbxFiltreleme.SuspendLayout();
@@ -57,9 +57,9 @@ namespace MuhasebeApp.UserUI.Forms
             // dgvGiderListeleme
             // 
             this.dgvGiderListeleme.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvGiderListeleme.Location = new System.Drawing.Point(51, 21);
+            this.dgvGiderListeleme.Location = new System.Drawing.Point(33, 21);
             this.dgvGiderListeleme.Name = "dgvGiderListeleme";
-            this.dgvGiderListeleme.Size = new System.Drawing.Size(941, 150);
+            this.dgvGiderListeleme.Size = new System.Drawing.Size(959, 253);
             this.dgvGiderListeleme.TabIndex = 0;
             // 
             // gbxGiderEkleme
@@ -73,16 +73,16 @@ namespace MuhasebeApp.UserUI.Forms
             this.gbxGiderEkleme.Controls.Add(this.lblTarih);
             this.gbxGiderEkleme.Controls.Add(this.lblToplamTutar);
             this.gbxGiderEkleme.Controls.Add(this.lblIcerik);
-            this.gbxGiderEkleme.Location = new System.Drawing.Point(613, 193);
+            this.gbxGiderEkleme.Location = new System.Drawing.Point(613, 280);
             this.gbxGiderEkleme.Name = "gbxGiderEkleme";
-            this.gbxGiderEkleme.Size = new System.Drawing.Size(379, 383);
+            this.gbxGiderEkleme.Size = new System.Drawing.Size(379, 296);
             this.gbxGiderEkleme.TabIndex = 1;
             this.gbxGiderEkleme.TabStop = false;
             this.gbxGiderEkleme.Text = "Gider Ekleme";
             // 
             // btnKaydet
             // 
-            this.btnKaydet.Location = new System.Drawing.Point(258, 295);
+            this.btnKaydet.Location = new System.Drawing.Point(257, 244);
             this.btnKaydet.Name = "btnKaydet";
             this.btnKaydet.Size = new System.Drawing.Size(75, 23);
             this.btnKaydet.TabIndex = 8;
@@ -91,7 +91,7 @@ namespace MuhasebeApp.UserUI.Forms
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(133, 181);
+            this.textBox3.Location = new System.Drawing.Point(132, 148);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(200, 74);
@@ -99,21 +99,21 @@ namespace MuhasebeApp.UserUI.Forms
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(133, 142);
+            this.dateTimePicker1.Location = new System.Drawing.Point(132, 109);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 6;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(133, 104);
+            this.textBox2.Location = new System.Drawing.Point(132, 71);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 5;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(133, 67);
+            this.textBox1.Location = new System.Drawing.Point(132, 34);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 4;
@@ -121,7 +121,7 @@ namespace MuhasebeApp.UserUI.Forms
             // lblAciklama
             // 
             this.lblAciklama.AutoSize = true;
-            this.lblAciklama.Location = new System.Drawing.Point(37, 184);
+            this.lblAciklama.Location = new System.Drawing.Point(36, 151);
             this.lblAciklama.Name = "lblAciklama";
             this.lblAciklama.Size = new System.Drawing.Size(50, 13);
             this.lblAciklama.TabIndex = 3;
@@ -130,7 +130,7 @@ namespace MuhasebeApp.UserUI.Forms
             // lblTarih
             // 
             this.lblTarih.AutoSize = true;
-            this.lblTarih.Location = new System.Drawing.Point(37, 142);
+            this.lblTarih.Location = new System.Drawing.Point(36, 109);
             this.lblTarih.Name = "lblTarih";
             this.lblTarih.Size = new System.Drawing.Size(31, 13);
             this.lblTarih.TabIndex = 2;
@@ -139,7 +139,7 @@ namespace MuhasebeApp.UserUI.Forms
             // lblToplamTutar
             // 
             this.lblToplamTutar.AutoSize = true;
-            this.lblToplamTutar.Location = new System.Drawing.Point(37, 107);
+            this.lblToplamTutar.Location = new System.Drawing.Point(36, 74);
             this.lblToplamTutar.Name = "lblToplamTutar";
             this.lblToplamTutar.Size = new System.Drawing.Size(70, 13);
             this.lblToplamTutar.TabIndex = 1;
@@ -148,7 +148,7 @@ namespace MuhasebeApp.UserUI.Forms
             // lblIcerik
             // 
             this.lblIcerik.AutoSize = true;
-            this.lblIcerik.Location = new System.Drawing.Point(37, 67);
+            this.lblIcerik.Location = new System.Drawing.Point(36, 34);
             this.lblIcerik.Name = "lblIcerik";
             this.lblIcerik.Size = new System.Drawing.Size(33, 13);
             this.lblIcerik.TabIndex = 0;
@@ -164,78 +164,78 @@ namespace MuhasebeApp.UserUI.Forms
             this.gbxFiltreleme.Controls.Add(this.lblFTarihAralik);
             this.gbxFiltreleme.Controls.Add(this.lblFBaslangicTarihi);
             this.gbxFiltreleme.Controls.Add(this.lblBitişTarihi);
-            this.gbxFiltreleme.Location = new System.Drawing.Point(51, 193);
+            this.gbxFiltreleme.Location = new System.Drawing.Point(33, 280);
             this.gbxFiltreleme.Name = "gbxFiltreleme";
-            this.gbxFiltreleme.Size = new System.Drawing.Size(337, 383);
+            this.gbxFiltreleme.Size = new System.Drawing.Size(337, 296);
             this.gbxFiltreleme.TabIndex = 2;
             this.gbxFiltreleme.TabStop = false;
             this.gbxFiltreleme.Text = "Filtreleme";
             // 
             // btnAra
             // 
-            this.btnAra.Location = new System.Drawing.Point(207, 289);
+            this.btnAra.Location = new System.Drawing.Point(231, 244);
             this.btnAra.Name = "btnAra";
             this.btnAra.Size = new System.Drawing.Size(75, 23);
             this.btnAra.TabIndex = 51;
             this.btnAra.Text = "Ara";
             this.btnAra.UseVisualStyleBackColor = true;
             // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(101, 175);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(181, 20);
-            this.dateTimePicker2.TabIndex = 48;
-            // 
             // dateTimePicker3
             // 
-            this.dateTimePicker3.Location = new System.Drawing.Point(101, 142);
+            this.dateTimePicker3.Location = new System.Drawing.Point(114, 118);
             this.dateTimePicker3.Name = "dateTimePicker3";
             this.dateTimePicker3.Size = new System.Drawing.Size(181, 20);
             this.dateTimePicker3.TabIndex = 47;
             // 
-            // lblBitişTarihi
+            // lblFIcerik
             // 
-            this.lblBitişTarihi.AutoSize = true;
-            this.lblBitişTarihi.Location = new System.Drawing.Point(13, 175);
-            this.lblBitişTarihi.Name = "lblBitişTarihi";
-            this.lblBitişTarihi.Size = new System.Drawing.Size(55, 13);
-            this.lblBitişTarihi.TabIndex = 5;
-            this.lblBitişTarihi.Text = "Bitiş Tarihi";
+            this.lblFIcerik.AutoSize = true;
+            this.lblFIcerik.Location = new System.Drawing.Point(26, 41);
+            this.lblFIcerik.Name = "lblFIcerik";
+            this.lblFIcerik.Size = new System.Drawing.Size(90, 13);
+            this.lblFIcerik.TabIndex = 0;
+            this.lblFIcerik.Text = "İçeriğe Göre Ara: ";
             // 
-            // lblFBaslangicTarihi
+            // dateTimePicker2
             // 
-            this.lblFBaslangicTarihi.AutoSize = true;
-            this.lblFBaslangicTarihi.Location = new System.Drawing.Point(13, 145);
-            this.lblFBaslangicTarihi.Name = "lblFBaslangicTarihi";
-            this.lblFBaslangicTarihi.Size = new System.Drawing.Size(82, 13);
-            this.lblFBaslangicTarihi.TabIndex = 4;
-            this.lblFBaslangicTarihi.Text = "Baslangıç Tarihi";
+            this.dateTimePicker2.Location = new System.Drawing.Point(114, 151);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(181, 20);
+            this.dateTimePicker2.TabIndex = 48;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(84, 64);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(130, 20);
+            this.textBox4.TabIndex = 1;
             // 
             // lblFTarihAralik
             // 
             this.lblFTarihAralik.AutoSize = true;
-            this.lblFTarihAralik.Location = new System.Drawing.Point(13, 119);
+            this.lblFTarihAralik.Location = new System.Drawing.Point(26, 95);
             this.lblFTarihAralik.Name = "lblFTarihAralik";
             this.lblFTarihAralik.Size = new System.Drawing.Size(122, 13);
             this.lblFTarihAralik.TabIndex = 2;
             this.lblFTarihAralik.Text = "Tarih Aralığına Göre Ara:";
             // 
-            // textBox4
+            // lblFBaslangicTarihi
             // 
-            this.textBox4.Location = new System.Drawing.Point(71, 88);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(130, 20);
-            this.textBox4.TabIndex = 1;
+            this.lblFBaslangicTarihi.AutoSize = true;
+            this.lblFBaslangicTarihi.Location = new System.Drawing.Point(26, 121);
+            this.lblFBaslangicTarihi.Name = "lblFBaslangicTarihi";
+            this.lblFBaslangicTarihi.Size = new System.Drawing.Size(82, 13);
+            this.lblFBaslangicTarihi.TabIndex = 4;
+            this.lblFBaslangicTarihi.Text = "Baslangıç Tarihi";
             // 
-            // lblFIcerik
+            // lblBitişTarihi
             // 
-            this.lblFIcerik.AutoSize = true;
-            this.lblFIcerik.Location = new System.Drawing.Point(13, 65);
-            this.lblFIcerik.Name = "lblFIcerik";
-            this.lblFIcerik.Size = new System.Drawing.Size(90, 13);
-            this.lblFIcerik.TabIndex = 0;
-            this.lblFIcerik.Text = "İçeriğe Göre Ara: ";
+            this.lblBitişTarihi.AutoSize = true;
+            this.lblBitişTarihi.Location = new System.Drawing.Point(26, 151);
+            this.lblBitişTarihi.Name = "lblBitişTarihi";
+            this.lblBitişTarihi.Size = new System.Drawing.Size(55, 13);
+            this.lblBitişTarihi.TabIndex = 5;
+            this.lblBitişTarihi.Text = "Bitiş Tarihi";
             // 
             // GiderListeleme
             // 

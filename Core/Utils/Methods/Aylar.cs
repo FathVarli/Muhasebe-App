@@ -26,6 +26,12 @@ namespace MuhasebeApp.Core.Utils.Methods
             return ayList;
         }
 
+        public static Ay getAyById(int id)
+        {
+            var ayList = getAllAy();
+            return ayList.Find(a => a.Id == id);
+        }
+
     }
 
     public class Ay

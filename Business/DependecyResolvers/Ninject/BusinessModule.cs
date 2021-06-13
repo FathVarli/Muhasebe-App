@@ -22,17 +22,14 @@ namespace MuhasebeApp.Business.DependecyResolvers.Ninject
             Bind<IGelirDal>().To<EfGelirDal>().InSingletonScope();
             Bind<IGiderDal>().To<EfGiderDal>().InSingletonScope();
             Bind<IMalzemeDal>().To<EfMalzemeDal>().InSingletonScope();
+            Bind<IMalzemeChartDal>().To<EfMalzemeChartDal>().InSingletonScope();
 
             // Burası business serviseler için
             Bind<IKullaniciService>().To<KullaniciManager>().InSingletonScope();
             Bind<IGiderService>().To<GiderManager>().InSingletonScope();
             Bind<IGelirService>().To<GelirManager>().InSingletonScope();
             Bind<IMalzemeService>().To<MalzemeManager>().InSingletonScope();
-
-
-
-
-
+            Bind<IRaporService>().To<RaporManager>().InSingletonScope();
 
         }
 

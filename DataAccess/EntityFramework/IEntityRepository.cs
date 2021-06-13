@@ -1,6 +1,7 @@
 ﻿using MuhasebeApp.Core.Entity;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
@@ -19,7 +20,6 @@ namespace MuhasebeApp.DataAccess.EntityFramework
         void Delete(T entity);
 
         List<T> GetListQuery(string query);
-
-
+        decimal GetTotalMoney(string query);
     }
 }

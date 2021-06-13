@@ -1,4 +1,5 @@
 ﻿using Entity.Concrete;
+using Entity.Dto;
 using MuhasebeApp.Core.Utils.Results;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,10 @@ namespace Business.Abstract
         IResult DeleteById(int id);
         IResult UpdateById(int id, Gelir gelir);
         IDataResult<Gelir> GetById(int id);
-        IDataResult<List<Gelir>> getAll();
+        IDataResult<List<Gelir>> GetAll();
+        IDataResult<List<Gelir>> GetAllByFilter(GelirFilterDto gelirFilter);
+
+
+
     }
 }

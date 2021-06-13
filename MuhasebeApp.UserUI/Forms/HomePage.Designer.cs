@@ -29,17 +29,20 @@ namespace MuhasebeApp.UserUI.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblSaat = new System.Windows.Forms.Label();
             this.btnGelir = new System.Windows.Forms.Button();
             this.btnGider = new System.Windows.Forms.Button();
             this.btnMalzeme = new System.Windows.Forms.Button();
             this.btnRaporlama = new System.Windows.Forms.Button();
+            this.lblTarih = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // lblSaat
             // 
             this.lblSaat.AutoSize = true;
-            this.lblSaat.Location = new System.Drawing.Point(709, 48);
+            this.lblSaat.Location = new System.Drawing.Point(711, 68);
             this.lblSaat.Name = "lblSaat";
             this.lblSaat.Size = new System.Drawing.Size(29, 13);
             this.lblSaat.TabIndex = 0;
@@ -81,11 +84,25 @@ namespace MuhasebeApp.UserUI.Forms
             this.btnRaporlama.Text = "Raporlama Sayfasi";
             this.btnRaporlama.UseVisualStyleBackColor = true;
             // 
+            // lblTarih
+            // 
+            this.lblTarih.AutoSize = true;
+            this.lblTarih.Location = new System.Drawing.Point(711, 42);
+            this.lblTarih.Name = "lblTarih";
+            this.lblTarih.Size = new System.Drawing.Size(31, 13);
+            this.lblTarih.TabIndex = 5;
+            this.lblTarih.Text = "Tarih";
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // HomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblTarih);
             this.Controls.Add(this.btnRaporlama);
             this.Controls.Add(this.btnMalzeme);
             this.Controls.Add(this.btnGider);
@@ -105,5 +122,7 @@ namespace MuhasebeApp.UserUI.Forms
         private System.Windows.Forms.Button btnGider;
         private System.Windows.Forms.Button btnMalzeme;
         private System.Windows.Forms.Button btnRaporlama;
+        private System.Windows.Forms.Label lblTarih;
+        private System.Windows.Forms.Timer timer1;
     }
 }

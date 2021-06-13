@@ -58,8 +58,8 @@ namespace MuhasebeApp.UserUI.Forms
             this.lblBitişTarihi = new System.Windows.Forms.Label();
             this.lblFBaslangicTarihi = new System.Windows.Forms.Label();
             this.lblFTarihAralik = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.lblFMalzemeAdi = new System.Windows.Forms.Label();
+            this.cbxFMalzemeAdi = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGelirListeleme)).BeginInit();
             this.gbxUpdate.SuspendLayout();
             this.gbxFiltreleme.SuspendLayout();
@@ -243,6 +243,7 @@ namespace MuhasebeApp.UserUI.Forms
             // 
             // gbxFiltreleme
             // 
+            this.gbxFiltreleme.Controls.Add(this.cbxFMalzemeAdi);
             this.gbxFiltreleme.Controls.Add(this.btnAra);
             this.gbxFiltreleme.Controls.Add(this.cbxFOdemeSekli);
             this.gbxFiltreleme.Controls.Add(this.dateTimePicker2);
@@ -252,7 +253,6 @@ namespace MuhasebeApp.UserUI.Forms
             this.gbxFiltreleme.Controls.Add(this.lblBitişTarihi);
             this.gbxFiltreleme.Controls.Add(this.lblFBaslangicTarihi);
             this.gbxFiltreleme.Controls.Add(this.lblFTarihAralik);
-            this.gbxFiltreleme.Controls.Add(this.textBox1);
             this.gbxFiltreleme.Controls.Add(this.lblFMalzemeAdi);
             this.gbxFiltreleme.Location = new System.Drawing.Point(12, 183);
             this.gbxFiltreleme.Name = "gbxFiltreleme";
@@ -337,13 +337,6 @@ namespace MuhasebeApp.UserUI.Forms
             this.lblFTarihAralik.TabIndex = 2;
             this.lblFTarihAralik.Text = "Tarih Aralığına Göre Ara:";
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(64, 79);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(130, 20);
-            this.textBox1.TabIndex = 1;
-            // 
             // lblFMalzemeAdi
             // 
             this.lblFMalzemeAdi.AutoSize = true;
@@ -352,6 +345,14 @@ namespace MuhasebeApp.UserUI.Forms
             this.lblFMalzemeAdi.Size = new System.Drawing.Size(130, 13);
             this.lblFMalzemeAdi.TabIndex = 0;
             this.lblFMalzemeAdi.Text = "Malzeme Adina Göre Ara: ";
+            // 
+            // cbxFMalzemeAdi
+            // 
+            this.cbxFMalzemeAdi.FormattingEnabled = true;
+            this.cbxFMalzemeAdi.Location = new System.Drawing.Point(94, 79);
+            this.cbxFMalzemeAdi.Name = "cbxFMalzemeAdi";
+            this.cbxFMalzemeAdi.Size = new System.Drawing.Size(181, 21);
+            this.cbxFMalzemeAdi.TabIndex = 44;
             // 
             // GelirListeleme
             // 
@@ -401,9 +402,9 @@ namespace MuhasebeApp.UserUI.Forms
         private System.Windows.Forms.Label lblBitişTarihi;
         private System.Windows.Forms.Label lblFBaslangicTarihi;
         private System.Windows.Forms.Label lblFTarihAralik;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label lblFMalzemeAdi;
         private System.Windows.Forms.ComboBox cbxFOdemeSekli;
         private System.Windows.Forms.Button btnAra;
+        private System.Windows.Forms.ComboBox cbxFMalzemeAdi;
     }
 }

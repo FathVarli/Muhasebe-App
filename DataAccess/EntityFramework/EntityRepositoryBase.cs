@@ -69,5 +69,13 @@ namespace MuhasebeApp.DataAccess.EntityFramework
             }
         }
 
+        public decimal GetTotalMoney(string query)
+        {
+            using (var context = new TContext())
+            {
+                var _total = context.Database.ExecuteSqlRaw(query);
+                return _total; 
+            }
+        }
     }
 }

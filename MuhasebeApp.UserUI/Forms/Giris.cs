@@ -1,4 +1,5 @@
-﻿using MuhasebeApp.Business.Abstract;
+﻿using DataAccess.EntityFramework;
+using MuhasebeApp.Business.Abstract;
 using MuhasebeApp.Business.DependecyResolvers.Ninject;
 using MuhasebeApp.DataAccess.EntityFramework;
 using MuhasebeApp.Entity;
@@ -26,16 +27,19 @@ namespace MuhasebeApp.UserUI.Forms
         {
             PgDbContext context = new PgDbContext();
             context.Database.EnsureCreated();
+            DbInitializer.Initialize(context);
+
         }
 
         private void btnGiris_Click(object sender, EventArgs e)
         {
-            var loginDto = new LoginDto {
+            var loginDto = new LoginDto
+            {
                 Tc = txtTc.Text,
                 Sifre = txtSifre.Text.Trim()
             };
 
-           var result = _kullaniciService.Login(loginDto);
+            var result = _kullaniciService.Login(loginDto);
             if (result.Success)
             {
                 //Navigator
@@ -46,6 +50,6 @@ namespace MuhasebeApp.UserUI.Forms
             }
         }
 
-     
+
     }
 }

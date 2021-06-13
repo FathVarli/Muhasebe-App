@@ -35,6 +35,7 @@
       <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -48,10 +49,12 @@
     <Compile Include="Abstract\IGiderService.cs" />
     <Compile Include="Abstract\IKullaniciService.cs" />
     <Compile Include="Abstract\IMalzemeService.cs" />
+    <Compile Include="Abstract\IRaporService.cs" />
     <Compile Include="Concrete\GelirManager.cs" />
     <Compile Include="Concrete\GiderManager.cs" />
     <Compile Include="Concrete\KullaniciManager.cs" />
     <Compile Include="Concrete\MalzemeManager.cs" />
+    <Compile Include="Concrete\RaporManager.cs" />
     <Compile Include="DependecyResolvers\Ninject\BusinessModule.cs" />
     <Compile Include="DependecyResolvers\Ninject\InstanceFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

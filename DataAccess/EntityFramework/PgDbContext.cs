@@ -19,7 +19,20 @@ namespace MuhasebeApp.DataAccess.EntityFramework
         public DbSet<Kullanici> Kullanicis { get; set; }
         public DbSet<Gelir> Gelirs { get; set; }
         public DbSet<Gider> Giders { get; set; }
-        public DbSet<Malzeme> Malzmes { get; set; }
+        public DbSet<Malzeme> Malzemes { get; set; }
+        public DbSet<V_Malzeme_Chart> v_Malzeme_Charts { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder
+        .Entity<V_Malzeme_Chart>(eb =>
+             {
+                 eb.HasNoKey();
+                 eb.ToView("v_bos_sandalye");
+             });
+
+
+        }
 
     }
 }

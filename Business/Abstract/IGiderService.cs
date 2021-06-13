@@ -1,4 +1,5 @@
 ﻿using Entity.Concrete;
+using Entity.Dto;
 using MuhasebeApp.Core.Utils.Results;
 using System;
 using System.Collections.Generic;
@@ -11,9 +12,11 @@ namespace Business.Abstract
     public interface IGiderService
     {
         IResult Add(Gider gider);
-        IResult UpdateById(int id,Gider gider);
+        IResult UpdateById(int id, Gider gider);
         IResult DeleteById(int id);
-        IDataResult<Gider> getById(int id);
-        IDataResult<List<Gider>> getAll();
+        IDataResult<Gider> GetById(int id);
+        IDataResult<List<Gider>> GetAll();
+        IDataResult<List<Gider>> GetAllByFilter(GiderFilterDto giderFilterDto);
+
     }
 }
