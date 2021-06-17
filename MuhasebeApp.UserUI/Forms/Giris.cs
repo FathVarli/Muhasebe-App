@@ -42,7 +42,9 @@ namespace MuhasebeApp.UserUI.Forms
             var result = _kullaniciService.Login(loginDto);
             if (result.Success)
             {
-                //Navigator
+                GelirEkleme gelir = new GelirEkleme();
+                gelir.Show();
+                this.Hide();
             }
             else
             {
@@ -50,6 +52,11 @@ namespace MuhasebeApp.UserUI.Forms
             }
         }
 
-
+        private void btnKayit_Click(object sender, EventArgs e)
+        {
+            Kayit kayit = new Kayit();
+            kayit.Show();
+            this.Hide();
+        }
     }
 }

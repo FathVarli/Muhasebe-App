@@ -15,8 +15,8 @@ namespace Business.Abstract
         IResult DeleteById(int id);
         IResult UpdateById(int id, Gelir gelir);
         IDataResult<Gelir> GetById(int id);
-        IDataResult<List<Gelir>> GetAll();
-        IDataResult<List<Gelir>> GetAllByFilter(GelirFilterDto gelirFilter);
+        IDataResult<List<GelirListDto>> GetAll();
+        IDataResult<List<GelirListDto>> GetAllByFilter(GelirFilterDto gelirFilter);
 
 
 

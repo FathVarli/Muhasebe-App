@@ -14,6 +14,10 @@ namespace Business.Abstract
         IResult UpdateById(int id, Malzeme malzeme);
         IResult DeleteById(int id);
         IDataResult<Malzeme> GetById(int id);
+        IDataResult<Malzeme> GetByName(string name);
         IDataResult<List<Malzeme>> GetAll();
+        IDataResult<List<String>> GetAllMalzemeAdi();
+        IDataResult<List<Malzeme>> GetAllListByMalzemeAdi(string ad);
+
     }
 }

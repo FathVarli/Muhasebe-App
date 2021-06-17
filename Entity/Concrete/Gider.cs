@@ -22,9 +22,6 @@ namespace Entity.Concrete
         public decimal ToplamTutar { get; set; }
         [Column("tarih")]
         public DateTime Tarih { get; set; }
-        [Column("ekleyen_kullanici_ad_soyad")]
-        [MaxLength(250)]
-        public string EkleyenKullaniciAdSoyad { get; set; }
         [Column("aciklama")]
         [MaxLength(500)]
         public string Aciklama { get; set; }

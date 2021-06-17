@@ -24,7 +24,10 @@ namespace Business.Concrete
 
         public IResult Add(Gelir gelir)
         {
-
+            if (gelir.AlinanTutar > gelir.ToplamTutar)
+            {
+                return new ErrorResult("Alınan tutar toplam tutardan fazla olamaz!");
+            }
             _gelirDal.Add(gelir);
             return new SuccessResult("Gelir başarıyla eklendi.");
         }
@@ -40,19 +43,39 @@ namespace Business.Concrete
             return new SuccessResult("Gelir başarıyla silindi.");
         }
 
-        public IDataResult<List<Gelir>> GetAll()
+        public IDataResult<List<GelirListDto>> GetAll()
         {
-            return new SuccessDataResult<List<Gelir>>(_gelirDal.GetList());
+            var gelirDtoList = new List<GelirListDto>();
+            var gelirList = _gelirDal.GetList();
+            foreach (var gelir in gelirList)
+            {
+                var malzeme = _malzemeDal.Get(m => m.Id == gelir.MalzemeId);
+                var gelirListDto = new GelirListDto
+                {
+                    Id = gelir.Id,
+                    MalzemeAdi = malzeme.Ad,
+                    Adet = gelir.Adet,
+                    ToplamTutar = gelir.ToplamTutar,
+                    AlinanTutar = gelir.AlinanTutar,
+                    OdemeSekli = gelir.OdemeSekli,
+                    Tarih = gelir.Tarih,
+                    Aciklama = gelir.Aciklama,
+                };
+                gelirDtoList.Add(gelirListDto);
+            }
+            return new SuccessDataResult<List<GelirListDto>>(gelirDtoList);
         }
 
-        public IDataResult<List<Gelir>> GetAllByFilter(GelirFilterDto gelirFilter)
+        public IDataResult<List<GelirListDto>> GetAllByFilter(GelirFilterDto gelirFilter)
         {
+            var gelirDtoList = new List<GelirListDto>();
             var predicate = PredicateBuilder.True<Gelir>();
 
 
-            if (gelirFilter.MalzemeId > 0)
+            if (!string.IsNullOrEmpty(gelirFilter.MalzemeAd))
             {
-                predicate = predicate.And(p => p.MalzemeId == gelirFilter.MalzemeId);
+                var malzemeId = _malzemeDal.Get(m => m.Ad == gelirFilter.MalzemeAd);
+                predicate = predicate.And(p => p.MalzemeId == malzemeId.Id);
             }
             if (!string.IsNullOrEmpty(gelirFilter.OdemeSekli))
             {
@@ -60,17 +83,27 @@ namespace Business.Concrete
             }
             if (gelirFilter.StartDate != null && gelirFilter.EndDate != null)
             {
-                //gelirFilter.StartDate += "23:59";
-                //gelirFilter.EndDate += "00:00";
-
-                //string query = string.Format("SELECT * FROM gelir WHERE tarih >= '{0}' AND tarih <= '{1}'", gelirFilter.StartDate, gelirFilter.EndDate);
-                //List<int> list = _gelirDal.GetListQuery(query);
-
                 predicate = predicate.And(p => p.Tarih >= gelirFilter.StartDate && p.Tarih <= gelirFilter.EndDate);
             }
 
             var gelirList = _gelirDal.GetList(predicate);
-            return new SuccessDataResult<List<Gelir>>(gelirList);
+            foreach (var gelir in gelirList)
+            {
+                var malzeme = _malzemeDal.Get(m => m.Id == gelir.MalzemeId);
+                var gelirListDto = new GelirListDto
+                {
+                    Id = gelir.Id,
+                    MalzemeAdi = malzeme.Ad,
+                    Adet = gelir.Adet,
+                    ToplamTutar = gelir.ToplamTutar,
+                    AlinanTutar = gelir.AlinanTutar,
+                    OdemeSekli = gelir.OdemeSekli,
+                    Tarih = gelir.Tarih,
+                    Aciklama = gelir.Aciklama,
+                };
+                gelirDtoList.Add(gelirListDto);
+            }
+            return new SuccessDataResult<List<GelirListDto>>(gelirDtoList);
         }
 
         public IDataResult<Gelir> GetById(int id)
@@ -90,6 +123,10 @@ namespace Business.Concrete
             {
                 return new ErrorResult("Gelir bulunamadı.");
             }
+            if (gelir.AlinanTutar > gelir.ToplamTutar)
+            {
+                return new ErrorResult("Alınan tutar toplam tutardan fazla olamaz!");
+            }
             if (gelir.ToplamTutar > 0)
             {
                 existGelir.ToplamTutar = gelir.ToplamTutar;
@@ -104,7 +141,7 @@ namespace Business.Concrete
             }
             if (gelir.MalzemeId > 0)
             {
-                var existMalzeme =_malzemeDal.Get(m => m.Id == gelir.MalzemeId);
+                var existMalzeme = _malzemeDal.Get(m => m.Id == gelir.MalzemeId);
                 if (existMalzeme == null)
                 {
                     return new ErrorResult("Malzeme bulunamadı.");
@@ -123,10 +160,7 @@ namespace Business.Concrete
             {
                 existGelir.Aciklama = gelir.Aciklama;
             }
-            if (!String.IsNullOrEmpty(gelir.EkleyenKullaniciAdSoyad))
-            {
-                existGelir.EkleyenKullaniciAdSoyad = gelir.EkleyenKullaniciAdSoyad;
-            }
+
 
             _gelirDal.Update(existGelir);
             return new SuccessResult("Gelir başarıyla güncellendi");

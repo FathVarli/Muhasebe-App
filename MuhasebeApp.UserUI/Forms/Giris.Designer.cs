@@ -94,6 +94,7 @@ namespace MuhasebeApp.UserUI.Forms
             this.btnKayit.TabIndex = 5;
             this.btnKayit.Text = "Kayıt";
             this.btnKayit.UseVisualStyleBackColor = true;
+            this.btnKayit.Click += new System.EventHandler(this.btnKayit_Click);
             // 
             // Giris
             // 

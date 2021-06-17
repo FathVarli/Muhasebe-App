@@ -31,8 +31,5 @@ namespace Entity.Concrete
         [Column("aciklama")]
         [MaxLength(500)]
         public string Aciklama { get; set; }
-        [Column("ekleyen_kullanici_ad_soyad")]
-        [MaxLength(500)]
-        public string EkleyenKullaniciAdSoyad { get; set; }
     }
 }

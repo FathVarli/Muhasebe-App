@@ -29,7 +29,8 @@ namespace MuhasebeApp.UserUI.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvGelirListeleme = new System.Windows.Forms.DataGridView();
+            this.components = new System.ComponentModel.Container();
+            this.dgwGelirListeleme = new System.Windows.Forms.DataGridView();
             this.gbxUpdate = new System.Windows.Forms.GroupBox();
             this.btnSil = new System.Windows.Forms.Button();
             this.btnGuncelle = new System.Windows.Forms.Button();
@@ -49,29 +50,35 @@ namespace MuhasebeApp.UserUI.Forms
             this.lblOdemeŞekli = new System.Windows.Forms.Label();
             this.lblAçıklama = new System.Windows.Forms.Label();
             this.gbxFiltreleme = new System.Windows.Forms.GroupBox();
+            this.cbxFMalzemeAdi = new System.Windows.Forms.ComboBox();
             this.btnAra = new System.Windows.Forms.Button();
             this.cbxFOdemeSekli = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpFEndDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpFStartDate = new System.Windows.Forms.DateTimePicker();
             this.lblOdemeSekli = new System.Windows.Forms.Label();
             this.lblOdemeSeklineGoreAra = new System.Windows.Forms.Label();
             this.lblBitişTarihi = new System.Windows.Forms.Label();
             this.lblFBaslangicTarihi = new System.Windows.Forms.Label();
             this.lblFTarihAralik = new System.Windows.Forms.Label();
             this.lblFMalzemeAdi = new System.Windows.Forms.Label();
-            this.cbxFMalzemeAdi = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvGelirListeleme)).BeginInit();
+            this.validationError = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnFilterClear = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwGelirListeleme)).BeginInit();
             this.gbxUpdate.SuspendLayout();
             this.gbxFiltreleme.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.validationError)).BeginInit();
             this.SuspendLayout();
             // 
-            // dgvGelirListeleme
+            // dgwGelirListeleme
             // 
-            this.dgvGelirListeleme.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvGelirListeleme.Location = new System.Drawing.Point(12, 12);
-            this.dgvGelirListeleme.Name = "dgvGelirListeleme";
-            this.dgvGelirListeleme.Size = new System.Drawing.Size(1128, 150);
-            this.dgvGelirListeleme.TabIndex = 0;
+            this.dgwGelirListeleme.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgwGelirListeleme.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2;
+            this.dgwGelirListeleme.Location = new System.Drawing.Point(12, 12);
+            this.dgwGelirListeleme.Name = "dgwGelirListeleme";
+            this.dgwGelirListeleme.ReadOnly = true;
+            this.dgwGelirListeleme.Size = new System.Drawing.Size(842, 150);
+            this.dgwGelirListeleme.TabIndex = 0;
+            this.dgwGelirListeleme.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwGelirListeleme_CellClick);
             // 
             // gbxUpdate
             // 
@@ -92,7 +99,7 @@ namespace MuhasebeApp.UserUI.Forms
             this.gbxUpdate.Controls.Add(this.cbxMalzemeAdi);
             this.gbxUpdate.Controls.Add(this.lblOdemeŞekli);
             this.gbxUpdate.Controls.Add(this.lblAçıklama);
-            this.gbxUpdate.Location = new System.Drawing.Point(800, 183);
+            this.gbxUpdate.Location = new System.Drawing.Point(514, 183);
             this.gbxUpdate.Name = "gbxUpdate";
             this.gbxUpdate.Size = new System.Drawing.Size(340, 342);
             this.gbxUpdate.TabIndex = 1;
@@ -107,6 +114,7 @@ namespace MuhasebeApp.UserUI.Forms
             this.btnSil.TabIndex = 51;
             this.btnSil.Text = "Sil";
             this.btnSil.UseVisualStyleBackColor = true;
+            this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
             // 
             // btnGuncelle
             // 
@@ -116,6 +124,7 @@ namespace MuhasebeApp.UserUI.Forms
             this.btnGuncelle.TabIndex = 50;
             this.btnGuncelle.Text = "Güncelle";
             this.btnGuncelle.UseVisualStyleBackColor = true;
+            this.btnGuncelle.Click += new System.EventHandler(this.btnGuncelle_Click);
             // 
             // txtAdet
             // 
@@ -123,6 +132,8 @@ namespace MuhasebeApp.UserUI.Forms
             this.txtAdet.Name = "txtAdet";
             this.txtAdet.Size = new System.Drawing.Size(64, 20);
             this.txtAdet.TabIndex = 44;
+            this.txtAdet.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAdet_KeyPress);
+            this.txtAdet.Validating += new System.ComponentModel.CancelEventHandler(this.txtAdet_Validating);
             // 
             // txtAciklama
             // 
@@ -147,6 +158,8 @@ namespace MuhasebeApp.UserUI.Forms
             this.txtAlinanTutar.Name = "txtAlinanTutar";
             this.txtAlinanTutar.Size = new System.Drawing.Size(64, 20);
             this.txtAlinanTutar.TabIndex = 48;
+            this.txtAlinanTutar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAlinanTutar_KeyPress);
+            this.txtAlinanTutar.Validating += new System.ComponentModel.CancelEventHandler(this.txtAlinanTutar_Validating);
             // 
             // lblAdet
             // 
@@ -159,6 +172,7 @@ namespace MuhasebeApp.UserUI.Forms
             // 
             // cbxOdemeSekli
             // 
+            this.cbxOdemeSekli.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxOdemeSekli.FormattingEnabled = true;
             this.cbxOdemeSekli.Location = new System.Drawing.Point(137, 185);
             this.cbxOdemeSekli.Name = "cbxOdemeSekli";
@@ -194,6 +208,7 @@ namespace MuhasebeApp.UserUI.Forms
             // 
             this.txtToplamTutar.Location = new System.Drawing.Point(137, 107);
             this.txtToplamTutar.Name = "txtToplamTutar";
+            this.txtToplamTutar.ReadOnly = true;
             this.txtToplamTutar.Size = new System.Drawing.Size(64, 20);
             this.txtToplamTutar.TabIndex = 45;
             // 
@@ -217,11 +232,13 @@ namespace MuhasebeApp.UserUI.Forms
             // 
             // cbxMalzemeAdi
             // 
+            this.cbxMalzemeAdi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxMalzemeAdi.FormattingEnabled = true;
             this.cbxMalzemeAdi.Location = new System.Drawing.Point(137, 48);
             this.cbxMalzemeAdi.Name = "cbxMalzemeAdi";
             this.cbxMalzemeAdi.Size = new System.Drawing.Size(121, 21);
             this.cbxMalzemeAdi.TabIndex = 43;
+            this.cbxMalzemeAdi.TextChanged += new System.EventHandler(this.cbxMalzemeAdi_TextChanged);
             // 
             // lblOdemeŞekli
             // 
@@ -243,11 +260,12 @@ namespace MuhasebeApp.UserUI.Forms
             // 
             // gbxFiltreleme
             // 
+            this.gbxFiltreleme.Controls.Add(this.btnFilterClear);
             this.gbxFiltreleme.Controls.Add(this.cbxFMalzemeAdi);
             this.gbxFiltreleme.Controls.Add(this.btnAra);
             this.gbxFiltreleme.Controls.Add(this.cbxFOdemeSekli);
-            this.gbxFiltreleme.Controls.Add(this.dateTimePicker2);
-            this.gbxFiltreleme.Controls.Add(this.dateTimePicker1);
+            this.gbxFiltreleme.Controls.Add(this.dtpFEndDate);
+            this.gbxFiltreleme.Controls.Add(this.dtpFStartDate);
             this.gbxFiltreleme.Controls.Add(this.lblOdemeSekli);
             this.gbxFiltreleme.Controls.Add(this.lblOdemeSeklineGoreAra);
             this.gbxFiltreleme.Controls.Add(this.lblBitişTarihi);
@@ -261,6 +279,17 @@ namespace MuhasebeApp.UserUI.Forms
             this.gbxFiltreleme.TabStop = false;
             this.gbxFiltreleme.Text = "Filtreleme";
             // 
+            // cbxFMalzemeAdi
+            // 
+            this.cbxFMalzemeAdi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxFMalzemeAdi.FormattingEnabled = true;
+            this.cbxFMalzemeAdi.Items.AddRange(new object[] {
+            "Malzeme Seçiniz"});
+            this.cbxFMalzemeAdi.Location = new System.Drawing.Point(94, 79);
+            this.cbxFMalzemeAdi.Name = "cbxFMalzemeAdi";
+            this.cbxFMalzemeAdi.Size = new System.Drawing.Size(181, 21);
+            this.cbxFMalzemeAdi.TabIndex = 44;
+            // 
             // btnAra
             // 
             this.btnAra.Location = new System.Drawing.Point(200, 280);
@@ -269,28 +298,30 @@ namespace MuhasebeApp.UserUI.Forms
             this.btnAra.TabIndex = 51;
             this.btnAra.Text = "Ara";
             this.btnAra.UseVisualStyleBackColor = true;
+            this.btnAra.Click += new System.EventHandler(this.btnAra_Click);
             // 
             // cbxFOdemeSekli
             // 
+            this.cbxFOdemeSekli.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxFOdemeSekli.FormattingEnabled = true;
             this.cbxFOdemeSekli.Location = new System.Drawing.Point(94, 225);
             this.cbxFOdemeSekli.Name = "cbxFOdemeSekli";
             this.cbxFOdemeSekli.Size = new System.Drawing.Size(121, 21);
             this.cbxFOdemeSekli.TabIndex = 49;
             // 
-            // dateTimePicker2
+            // dtpFEndDate
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(94, 166);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(181, 20);
-            this.dateTimePicker2.TabIndex = 48;
+            this.dtpFEndDate.Location = new System.Drawing.Point(94, 166);
+            this.dtpFEndDate.Name = "dtpFEndDate";
+            this.dtpFEndDate.Size = new System.Drawing.Size(181, 20);
+            this.dtpFEndDate.TabIndex = 48;
             // 
-            // dateTimePicker1
+            // dtpFStartDate
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(94, 133);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(181, 20);
-            this.dateTimePicker1.TabIndex = 47;
+            this.dtpFStartDate.Location = new System.Drawing.Point(94, 133);
+            this.dtpFStartDate.Name = "dtpFStartDate";
+            this.dtpFStartDate.Size = new System.Drawing.Size(181, 20);
+            this.dtpFStartDate.TabIndex = 47;
             // 
             // lblOdemeSekli
             // 
@@ -346,36 +377,44 @@ namespace MuhasebeApp.UserUI.Forms
             this.lblFMalzemeAdi.TabIndex = 0;
             this.lblFMalzemeAdi.Text = "Malzeme Adina Göre Ara: ";
             // 
-            // cbxFMalzemeAdi
+            // validationError
             // 
-            this.cbxFMalzemeAdi.FormattingEnabled = true;
-            this.cbxFMalzemeAdi.Location = new System.Drawing.Point(94, 79);
-            this.cbxFMalzemeAdi.Name = "cbxFMalzemeAdi";
-            this.cbxFMalzemeAdi.Size = new System.Drawing.Size(181, 21);
-            this.cbxFMalzemeAdi.TabIndex = 44;
+            this.validationError.ContainerControl = this;
+            // 
+            // btnFilterClear
+            // 
+            this.btnFilterClear.Location = new System.Drawing.Point(26, 280);
+            this.btnFilterClear.Name = "btnFilterClear";
+            this.btnFilterClear.Size = new System.Drawing.Size(102, 23);
+            this.btnFilterClear.TabIndex = 52;
+            this.btnFilterClear.Text = "Filtreleleri Temizle";
+            this.btnFilterClear.UseVisualStyleBackColor = true;
+            this.btnFilterClear.Click += new System.EventHandler(this.btnFilterClear_Click);
             // 
             // GelirListeleme
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1157, 568);
+            this.ClientSize = new System.Drawing.Size(868, 568);
             this.Controls.Add(this.gbxFiltreleme);
             this.Controls.Add(this.gbxUpdate);
-            this.Controls.Add(this.dgvGelirListeleme);
+            this.Controls.Add(this.dgwGelirListeleme);
             this.Name = "GelirListeleme";
             this.Text = "GelirListeleme";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvGelirListeleme)).EndInit();
+            this.Load += new System.EventHandler(this.GelirListeleme_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgwGelirListeleme)).EndInit();
             this.gbxUpdate.ResumeLayout(false);
             this.gbxUpdate.PerformLayout();
             this.gbxFiltreleme.ResumeLayout(false);
             this.gbxFiltreleme.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.validationError)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgvGelirListeleme;
+        private System.Windows.Forms.DataGridView dgwGelirListeleme;
         private System.Windows.Forms.GroupBox gbxUpdate;
         private System.Windows.Forms.Button btnSil;
         private System.Windows.Forms.Button btnGuncelle;
@@ -395,8 +434,8 @@ namespace MuhasebeApp.UserUI.Forms
         private System.Windows.Forms.Label lblOdemeŞekli;
         private System.Windows.Forms.Label lblAçıklama;
         private System.Windows.Forms.GroupBox gbxFiltreleme;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpFEndDate;
+        private System.Windows.Forms.DateTimePicker dtpFStartDate;
         private System.Windows.Forms.Label lblOdemeSekli;
         private System.Windows.Forms.Label lblOdemeSeklineGoreAra;
         private System.Windows.Forms.Label lblBitişTarihi;
@@ -406,5 +445,7 @@ namespace MuhasebeApp.UserUI.Forms
         private System.Windows.Forms.ComboBox cbxFOdemeSekli;
         private System.Windows.Forms.Button btnAra;
         private System.Windows.Forms.ComboBox cbxFMalzemeAdi;
+        private System.Windows.Forms.ErrorProvider validationError;
+        private System.Windows.Forms.Button btnFilterClear;
     }
 }

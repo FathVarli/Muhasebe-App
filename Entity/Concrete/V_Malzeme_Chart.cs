@@ -11,8 +11,11 @@ namespace Entity.Concrete
 
     public class V_Malzeme_Chart : IEntity
     {
+
         [Column("total")]
         public decimal Total { get; set; }
+        [Column("tarih")]
+        public DateTime Tarih { get; set; }
         [Column("malzeme_adi")]
         public string MalzemeAdi  { get; set; }
     }

@@ -84,10 +84,7 @@ namespace Business.Concrete
             {
                 existGider.Aciklama = gider.Aciklama;
             }
-            if (!String.IsNullOrEmpty(gider.EkleyenKullaniciAdSoyad))
-            {
-                existGider.EkleyenKullaniciAdSoyad = gider.EkleyenKullaniciAdSoyad;
-            }
+           
             if (gider.ToplamTutar > 0)
             {
                 existGider.ToplamTutar = gider.ToplamTutar;
@@ -96,7 +93,7 @@ namespace Business.Concrete
             {
                 existGider.Tarih = gider.Tarih;
             }
-
+            gider.Tarih = new DateTime(gider.Tarih.Year, gider.Tarih.Month, gider.Tarih.Day);
             _giderDal.Update(existGider);
             return new SuccessResult("Gider başarıyla güncellendi");
         }

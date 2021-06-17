@@ -29,6 +29,7 @@ namespace MuhasebeApp.UserUI.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblMalzeme = new System.Windows.Forms.Label();
             this.lblAdet = new System.Windows.Forms.Label();
             this.lblToplamTutar = new System.Windows.Forms.Label();
@@ -46,6 +47,8 @@ namespace MuhasebeApp.UserUI.Forms
             this.txtAciklama = new System.Windows.Forms.TextBox();
             this.btnKaydet = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
+            this.validationError = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.validationError)).BeginInit();
             this.SuspendLayout();
             // 
             // lblMalzeme
@@ -96,7 +99,7 @@ namespace MuhasebeApp.UserUI.Forms
             // lblBirim
             // 
             this.lblBirim.AutoSize = true;
-            this.lblBirim.Location = new System.Drawing.Point(306, 106);
+            this.lblBirim.Location = new System.Drawing.Point(284, 102);
             this.lblBirim.Name = "lblBirim";
             this.lblBirim.Size = new System.Drawing.Size(29, 13);
             this.lblBirim.TabIndex = 5;
@@ -122,11 +125,13 @@ namespace MuhasebeApp.UserUI.Forms
             // 
             // cbxMalzemeAdi
             // 
+            this.cbxMalzemeAdi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxMalzemeAdi.FormattingEnabled = true;
             this.cbxMalzemeAdi.Location = new System.Drawing.Point(214, 68);
             this.cbxMalzemeAdi.Name = "cbxMalzemeAdi";
             this.cbxMalzemeAdi.Size = new System.Drawing.Size(121, 21);
             this.cbxMalzemeAdi.TabIndex = 8;
+            this.cbxMalzemeAdi.TextChanged += new System.EventHandler(this.cbxMalzemeAdi_TextChanged);
             // 
             // txtAdet
             // 
@@ -134,11 +139,15 @@ namespace MuhasebeApp.UserUI.Forms
             this.txtAdet.Name = "txtAdet";
             this.txtAdet.Size = new System.Drawing.Size(64, 20);
             this.txtAdet.TabIndex = 9;
+            this.txtAdet.TextChanged += new System.EventHandler(this.txtAdet_TextChanged);
+            this.txtAdet.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAdet_KeyPress);
+            this.txtAdet.Validating += new System.ComponentModel.CancelEventHandler(this.txtAdet_Validating);
             // 
             // txtToplamTutar
             // 
             this.txtToplamTutar.Location = new System.Drawing.Point(214, 127);
             this.txtToplamTutar.Name = "txtToplamTutar";
+            this.txtToplamTutar.ReadOnly = true;
             this.txtToplamTutar.Size = new System.Drawing.Size(64, 20);
             this.txtToplamTutar.TabIndex = 10;
             // 
@@ -151,6 +160,7 @@ namespace MuhasebeApp.UserUI.Forms
             // 
             // cbxOdemeSekli
             // 
+            this.cbxOdemeSekli.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxOdemeSekli.FormattingEnabled = true;
             this.cbxOdemeSekli.Location = new System.Drawing.Point(214, 205);
             this.cbxOdemeSekli.Name = "cbxOdemeSekli";
@@ -163,6 +173,8 @@ namespace MuhasebeApp.UserUI.Forms
             this.txtAlinanTutar.Name = "txtAlinanTutar";
             this.txtAlinanTutar.Size = new System.Drawing.Size(64, 20);
             this.txtAlinanTutar.TabIndex = 15;
+            this.txtAlinanTutar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAlinanTutar_KeyPress);
+            this.txtAlinanTutar.Validating += new System.ComponentModel.CancelEventHandler(this.txtAlinanTutar_Validating);
             // 
             // txtAciklama
             // 
@@ -180,6 +192,7 @@ namespace MuhasebeApp.UserUI.Forms
             this.btnKaydet.TabIndex = 17;
             this.btnKaydet.Text = "Kaydet";
             this.btnKaydet.UseVisualStyleBackColor = true;
+            this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
             // 
             // btnBack
             // 
@@ -189,6 +202,10 @@ namespace MuhasebeApp.UserUI.Forms
             this.btnBack.TabIndex = 18;
             this.btnBack.Text = "Geri Dön";
             this.btnBack.UseVisualStyleBackColor = true;
+            // 
+            // validationError
+            // 
+            this.validationError.ContainerControl = this;
             // 
             // GelirEkleme
             // 
@@ -214,6 +231,8 @@ namespace MuhasebeApp.UserUI.Forms
             this.Controls.Add(this.lblMalzeme);
             this.Name = "GelirEkleme";
             this.Text = "GelirEkleme";
+            this.Load += new System.EventHandler(this.GelirEkleme_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.validationError)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -238,5 +257,6 @@ namespace MuhasebeApp.UserUI.Forms
         private System.Windows.Forms.TextBox txtAciklama;
         private System.Windows.Forms.Button btnKaydet;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.ErrorProvider validationError;
     }
 }

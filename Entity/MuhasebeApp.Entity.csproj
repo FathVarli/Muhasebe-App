@@ -48,13 +48,13 @@
     <Compile Include="Concrete\Malzeme.cs" />
     <Compile Include="Concrete\V_Malzeme_Chart.cs" />
     <Compile Include="Dto\GelirFilterDto.cs" />
+    <Compile Include="Dto\GelirListDto.cs" />
     <Compile Include="Dto\GiderFilterDto.cs" />
     <Compile Include="Dto\LoginDto.cs" />
     <Compile Include="Dto\MalzemeChartDto.cs" />
     <Compile Include="Dto\RegisterDto.cs" />
     <Compile Include="Dto\ToplamGelirGiderDto.cs" />
     <Compile Include="Dto\YillikChartToplamGelirGiderDto.cs" />
-    <Compile Include="Enum\EnmOdemeSekli.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -62,6 +62,9 @@
       <Project>{ff881cee-ddee-487b-a229-298c5a94aa42}</Project>
       <Name>MuhasebeApp.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Enum\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

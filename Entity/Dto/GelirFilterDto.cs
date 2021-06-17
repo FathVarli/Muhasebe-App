@@ -8,7 +8,7 @@ namespace Entity.Dto
 {
     public class GelirFilterDto
     {
-        public int MalzemeId { get; set; }
+        public string MalzemeAd { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public string OdemeSekli { get; set; }
