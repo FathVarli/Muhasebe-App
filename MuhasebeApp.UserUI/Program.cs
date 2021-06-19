@@ -17,7 +17,7 @@ namespace MuhasebeApp.UserUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Istatistik());
+            Application.Run(new HomePage());
         }
     }
 }
