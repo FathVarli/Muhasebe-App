@@ -32,6 +32,26 @@ namespace MuhasebeApp.Core.Utils.Methods
             return ayList.Find(a => a.Id == id);
         }
 
+        public static Ay getAyByAd(string ad)
+        {
+            var ayList = getAllAy();
+            return ayList.Find(a => a.Adi == ad.ToUpper());
+        }
+
+        public static List<string> getAllAyName()
+        {
+            List<string> ayAdList = new List<string>();
+
+
+            var ayList = getAllAy();
+            foreach (var ay in ayList)
+            {
+                ayAdList.Add(ay.Adi);
+            }
+            return ayAdList;
+
+        }
+
     }
 
     public class Ay

@@ -18,7 +18,5 @@ namespace Business.Abstract
         IDataResult<List<GelirListDto>> GetAll();
         IDataResult<List<GelirListDto>> GetAllByFilter(GelirFilterDto gelirFilter);
 
-
-
     }
 }

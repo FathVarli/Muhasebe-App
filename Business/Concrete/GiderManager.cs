@@ -48,7 +48,7 @@ namespace Business.Concrete
             var predicate = PredicateBuilder.True<Gider>();
             if (!string.IsNullOrEmpty(giderFilterDto.İcerik))
             {
-                predicate = predicate.And(p => p.Icerik.Contains(giderFilterDto.İcerik));
+                predicate = predicate.And(p => p.Icerik.ToLower().Contains(giderFilterDto.İcerik.ToLower()));
             }
             if (giderFilterDto.StartDate != null && giderFilterDto.EndDate != null)
             {

@@ -33,7 +33,7 @@ namespace MuhasebeApp.UserUI.Forms
             cbxFOdemeSekli.DataSource = getOdemeSekliList();
             cbxFOdemeSekli.SelectedIndex = -1;
             lblBirim.Text = _malzemeService.GetByName(cbxMalzemeAdi.Text).Data.Birim;
-            dtpFStartDate.Value = new DateTime(1900,01,01);
+            dtpFStartDate.Value = new DateTime(2000,01,01);
             dtpFEndDate.Value = new DateTime(2100,12,31);
             LoadGelir();
         }
@@ -49,7 +49,7 @@ namespace MuhasebeApp.UserUI.Forms
 
         private void dgwGelirListeleme_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgwGelirListeleme.CurrentRow != null)
+            if (dgwGelirListeleme.Rows != null)
             {
 
                 txtToplamTutar.Text = dgwGelirListeleme.CurrentRow.Cells[1].Value.ToString();
@@ -131,6 +131,39 @@ namespace MuhasebeApp.UserUI.Forms
             }
         }
 
+        private void btnAra_Click(object sender, EventArgs e)
+        {
+            var gelirFilterDto = new GelirFilterDto
+            {
+                MalzemeAd = cbxFMalzemeAdi.Text ?? " ",
+                OdemeSekli = cbxFOdemeSekli.Text ?? " ",
+                StartDate = dtpFStartDate.Value,
+                EndDate = dtpFEndDate.Value
+            };
+
+            var result = _gelirService.GetAllByFilter(gelirFilterDto);
+            if (result.Success)
+            {
+                if (result.Data.Count > 0)
+                {
+                    dgwGelirListeleme.DataSource = result.Data;
+                }
+                else
+                {
+                    MessageBox.Show("Belirttiğiniz filtrelere uygun bir nesne bulunamadı");
+                }
+            }
+        }
+
+        private void btnFilterClear_Click(object sender, EventArgs e)
+        {
+            cbxFMalzemeAdi.SelectedIndex = -1;
+            cbxFOdemeSekli.SelectedIndex = -1;
+            dtpFStartDate.Value = new DateTime(2000, 01, 01);
+            dtpFEndDate.Value = new DateTime(2100, 12, 31);
+            LoadGelir();
+        }
+
         private void cbxMalzemeAdi_TextChanged(object sender, EventArgs e)
         {
             lblBirim.Text = _malzemeService.GetByName(cbxMalzemeAdi.Text).Data.Birim;
@@ -208,37 +241,6 @@ namespace MuhasebeApp.UserUI.Forms
             return new DateTime(date.Year, date.Month, date.Day);
         }
 
-        private void btnAra_Click(object sender, EventArgs e)
-        {
-            var gelirFilterDto = new GelirFilterDto 
-            { 
-                MalzemeAd = cbxFMalzemeAdi.Text ?? " ",
-                OdemeSekli = cbxFOdemeSekli.Text ?? " ",
-                StartDate = dtpFStartDate.Value,
-                EndDate = dtpFEndDate.Value
-            };
 
-           var result = _gelirService.GetAllByFilter(gelirFilterDto);
-            if (result.Success)
-            {
-                if(result.Data.Count > 0)
-                {
-                    dgwGelirListeleme.DataSource = result.Data;
-                }
-                else
-                {
-                    MessageBox.Show("Belirttiğiniz filtrelere uygun bir nesne bulunamadı");
-                }
-            }
-        }
-
-        private void btnFilterClear_Click(object sender, EventArgs e)
-        {
-            cbxFMalzemeAdi.SelectedIndex = -1;
-            cbxFOdemeSekli.SelectedIndex = -1;
-            dtpFStartDate.Value = new DateTime(1900, 01, 01);
-            dtpFEndDate.Value = new DateTime(2100, 12, 31);
-            LoadGelir();
-        }
     }
 }

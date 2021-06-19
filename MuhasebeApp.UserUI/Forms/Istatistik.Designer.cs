@@ -48,16 +48,19 @@ namespace MuhasebeApp.UserUI.Forms
             this.lblToplamGelirMoney = new System.Windows.Forms.Label();
             this.lblToplamGelir = new System.Windows.Forms.Label();
             this.gbxAylikGelirGider = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtYil = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbxAy = new System.Windows.Forms.ComboBox();
             this.lblAylikKarMoney = new System.Windows.Forms.Label();
             this.lblAylikKar = new System.Windows.Forms.Label();
             this.lblAylikGiderMoney = new System.Windows.Forms.Label();
             this.lblAylikGider = new System.Windows.Forms.Label();
             this.lblAylikGelirMoney = new System.Windows.Forms.Label();
             this.lblAylikGelir = new System.Windows.Forms.Label();
+            this.bntHesapla = new System.Windows.Forms.Button();
+            this.lblToplamZararMoney = new System.Windows.Forms.Label();
+            this.lblToplamZarar = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             this.gbxTotal.SuspendLayout();
@@ -110,6 +113,8 @@ namespace MuhasebeApp.UserUI.Forms
             // 
             // gbxTotal
             // 
+            this.gbxTotal.Controls.Add(this.lblToplamZararMoney);
+            this.gbxTotal.Controls.Add(this.lblToplamZarar);
             this.gbxTotal.Controls.Add(this.lblToplamKarMoney);
             this.gbxTotal.Controls.Add(this.lblKar);
             this.gbxTotal.Controls.Add(this.lblToplamGiderMoney);
@@ -179,10 +184,11 @@ namespace MuhasebeApp.UserUI.Forms
             // 
             // gbxAylikGelirGider
             // 
-            this.gbxAylikGelirGider.Controls.Add(this.textBox1);
+            this.gbxAylikGelirGider.Controls.Add(this.bntHesapla);
+            this.gbxAylikGelirGider.Controls.Add(this.txtYil);
             this.gbxAylikGelirGider.Controls.Add(this.label2);
             this.gbxAylikGelirGider.Controls.Add(this.label1);
-            this.gbxAylikGelirGider.Controls.Add(this.comboBox1);
+            this.gbxAylikGelirGider.Controls.Add(this.cbxAy);
             this.gbxAylikGelirGider.Controls.Add(this.lblAylikKarMoney);
             this.gbxAylikGelirGider.Controls.Add(this.lblAylikKar);
             this.gbxAylikGelirGider.Controls.Add(this.lblAylikGiderMoney);
@@ -196,12 +202,12 @@ namespace MuhasebeApp.UserUI.Forms
             this.gbxAylikGelirGider.TabStop = false;
             this.gbxAylikGelirGider.Text = "Aylık Gelir Gider";
             // 
-            // textBox1
+            // txtYil
             // 
-            this.textBox1.Location = new System.Drawing.Point(344, 100);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(65, 20);
-            this.textBox1.TabIndex = 9;
+            this.txtYil.Location = new System.Drawing.Point(344, 101);
+            this.txtYil.Name = "txtYil";
+            this.txtYil.Size = new System.Drawing.Size(65, 20);
+            this.txtYil.TabIndex = 9;
             // 
             // label2
             // 
@@ -221,13 +227,14 @@ namespace MuhasebeApp.UserUI.Forms
             this.label1.TabIndex = 7;
             this.label1.Text = "Ay Seçiniz";
             // 
-            // comboBox1
+            // cbxAy
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(242, 100);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(96, 21);
-            this.comboBox1.TabIndex = 6;
+            this.cbxAy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxAy.FormattingEnabled = true;
+            this.cbxAy.Location = new System.Drawing.Point(242, 100);
+            this.cbxAy.Name = "cbxAy";
+            this.cbxAy.Size = new System.Drawing.Size(96, 21);
+            this.cbxAy.TabIndex = 6;
             // 
             // lblAylikKarMoney
             // 
@@ -283,6 +290,33 @@ namespace MuhasebeApp.UserUI.Forms
             this.lblAylikGelir.TabIndex = 0;
             this.lblAylikGelir.Text = "Toplam Gelir";
             // 
+            // bntHesapla
+            // 
+            this.bntHesapla.Location = new System.Drawing.Point(344, 160);
+            this.bntHesapla.Name = "bntHesapla";
+            this.bntHesapla.Size = new System.Drawing.Size(75, 23);
+            this.bntHesapla.TabIndex = 10;
+            this.bntHesapla.Text = "Hesapla";
+            this.bntHesapla.UseVisualStyleBackColor = true;
+            // 
+            // lblToplamZararMoney
+            // 
+            this.lblToplamZararMoney.AutoSize = true;
+            this.lblToplamZararMoney.Location = new System.Drawing.Point(161, 182);
+            this.lblToplamZararMoney.Name = "lblToplamZararMoney";
+            this.lblToplamZararMoney.Size = new System.Drawing.Size(19, 13);
+            this.lblToplamZararMoney.TabIndex = 7;
+            this.lblToplamZararMoney.Text = "00";
+            // 
+            // lblToplamZarar
+            // 
+            this.lblToplamZarar.AutoSize = true;
+            this.lblToplamZarar.Location = new System.Drawing.Point(56, 182);
+            this.lblToplamZarar.Name = "lblToplamZarar";
+            this.lblToplamZarar.Size = new System.Drawing.Size(70, 13);
+            this.lblToplamZarar.TabIndex = 6;
+            this.lblToplamZarar.Text = "Toplam Zarar";
+            // 
             // Istatistik
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -294,6 +328,7 @@ namespace MuhasebeApp.UserUI.Forms
             this.Controls.Add(this.chart1);
             this.Name = "Istatistik";
             this.Text = "İstatistik";
+            this.Load += new System.EventHandler(this.Istatistik_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             this.gbxTotal.ResumeLayout(false);
@@ -316,15 +351,18 @@ namespace MuhasebeApp.UserUI.Forms
         private System.Windows.Forms.Label lblToplamGelirMoney;
         private System.Windows.Forms.Label lblToplamGelir;
         private System.Windows.Forms.GroupBox gbxAylikGelirGider;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtYil;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbxAy;
         private System.Windows.Forms.Label lblAylikKarMoney;
         private System.Windows.Forms.Label lblAylikKar;
         private System.Windows.Forms.Label lblAylikGiderMoney;
         private System.Windows.Forms.Label lblAylikGider;
         private System.Windows.Forms.Label lblAylikGelirMoney;
         private System.Windows.Forms.Label lblAylikGelir;
+        private System.Windows.Forms.Button bntHesapla;
+        private System.Windows.Forms.Label lblToplamZararMoney;
+        private System.Windows.Forms.Label lblToplamZarar;
     }
 }

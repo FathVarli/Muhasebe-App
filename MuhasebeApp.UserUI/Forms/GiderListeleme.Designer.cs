@@ -29,94 +29,116 @@ namespace MuhasebeApp.UserUI.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvGiderListeleme = new System.Windows.Forms.DataGridView();
+            this.components = new System.ComponentModel.Container();
+            this.dgwGiderListeleme = new System.Windows.Forms.DataGridView();
             this.gbxGiderEkleme = new System.Windows.Forms.GroupBox();
-            this.btnKaydet = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnSil = new System.Windows.Forms.Button();
+            this.btnGüncelle = new System.Windows.Forms.Button();
+            this.txtAciklama = new System.Windows.Forms.TextBox();
+            this.dtpTarih = new System.Windows.Forms.DateTimePicker();
+            this.txtToplamTutar = new System.Windows.Forms.TextBox();
+            this.txtIcerik = new System.Windows.Forms.TextBox();
             this.lblAciklama = new System.Windows.Forms.Label();
             this.lblTarih = new System.Windows.Forms.Label();
             this.lblToplamTutar = new System.Windows.Forms.Label();
             this.lblIcerik = new System.Windows.Forms.Label();
             this.gbxFiltreleme = new System.Windows.Forms.GroupBox();
+            this.btnFilterClear = new System.Windows.Forms.Button();
             this.btnAra = new System.Windows.Forms.Button();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
+            this.dtpFStartDate = new System.Windows.Forms.DateTimePicker();
             this.lblFIcerik = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.dtpFEndDate = new System.Windows.Forms.DateTimePicker();
+            this.txtFIcerik = new System.Windows.Forms.TextBox();
             this.lblFTarihAralik = new System.Windows.Forms.Label();
             this.lblFBaslangicTarihi = new System.Windows.Forms.Label();
             this.lblBitişTarihi = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvGiderListeleme)).BeginInit();
+            this.validationError = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.dgwGiderListeleme)).BeginInit();
             this.gbxGiderEkleme.SuspendLayout();
             this.gbxFiltreleme.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.validationError)).BeginInit();
             this.SuspendLayout();
             // 
-            // dgvGiderListeleme
+            // dgwGiderListeleme
             // 
-            this.dgvGiderListeleme.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvGiderListeleme.Location = new System.Drawing.Point(33, 21);
-            this.dgvGiderListeleme.Name = "dgvGiderListeleme";
-            this.dgvGiderListeleme.Size = new System.Drawing.Size(959, 253);
-            this.dgvGiderListeleme.TabIndex = 0;
+            this.dgwGiderListeleme.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgwGiderListeleme.Location = new System.Drawing.Point(33, 21);
+            this.dgwGiderListeleme.Name = "dgwGiderListeleme";
+            this.dgwGiderListeleme.ReadOnly = true;
+            this.dgwGiderListeleme.Size = new System.Drawing.Size(758, 253);
+            this.dgwGiderListeleme.TabIndex = 0;
+            this.dgwGiderListeleme.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwGiderListeleme_CellClick);
             // 
             // gbxGiderEkleme
             // 
-            this.gbxGiderEkleme.Controls.Add(this.btnKaydet);
-            this.gbxGiderEkleme.Controls.Add(this.textBox3);
-            this.gbxGiderEkleme.Controls.Add(this.dateTimePicker1);
-            this.gbxGiderEkleme.Controls.Add(this.textBox2);
-            this.gbxGiderEkleme.Controls.Add(this.textBox1);
+            this.gbxGiderEkleme.Controls.Add(this.btnSil);
+            this.gbxGiderEkleme.Controls.Add(this.btnGüncelle);
+            this.gbxGiderEkleme.Controls.Add(this.txtAciklama);
+            this.gbxGiderEkleme.Controls.Add(this.dtpTarih);
+            this.gbxGiderEkleme.Controls.Add(this.txtToplamTutar);
+            this.gbxGiderEkleme.Controls.Add(this.txtIcerik);
             this.gbxGiderEkleme.Controls.Add(this.lblAciklama);
             this.gbxGiderEkleme.Controls.Add(this.lblTarih);
             this.gbxGiderEkleme.Controls.Add(this.lblToplamTutar);
             this.gbxGiderEkleme.Controls.Add(this.lblIcerik);
-            this.gbxGiderEkleme.Location = new System.Drawing.Point(613, 280);
+            this.gbxGiderEkleme.Location = new System.Drawing.Point(412, 280);
             this.gbxGiderEkleme.Name = "gbxGiderEkleme";
             this.gbxGiderEkleme.Size = new System.Drawing.Size(379, 296);
             this.gbxGiderEkleme.TabIndex = 1;
             this.gbxGiderEkleme.TabStop = false;
             this.gbxGiderEkleme.Text = "Gider Ekleme";
             // 
-            // btnKaydet
+            // btnSil
             // 
-            this.btnKaydet.Location = new System.Drawing.Point(257, 244);
-            this.btnKaydet.Name = "btnKaydet";
-            this.btnKaydet.Size = new System.Drawing.Size(75, 23);
-            this.btnKaydet.TabIndex = 8;
-            this.btnKaydet.Text = "Kaydet";
-            this.btnKaydet.UseVisualStyleBackColor = true;
+            this.btnSil.Location = new System.Drawing.Point(132, 244);
+            this.btnSil.Name = "btnSil";
+            this.btnSil.Size = new System.Drawing.Size(75, 23);
+            this.btnSil.TabIndex = 9;
+            this.btnSil.Text = "Sil";
+            this.btnSil.UseVisualStyleBackColor = true;
+            this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
             // 
-            // textBox3
+            // btnGüncelle
             // 
-            this.textBox3.Location = new System.Drawing.Point(132, 148);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(200, 74);
-            this.textBox3.TabIndex = 7;
+            this.btnGüncelle.Location = new System.Drawing.Point(257, 244);
+            this.btnGüncelle.Name = "btnGüncelle";
+            this.btnGüncelle.Size = new System.Drawing.Size(75, 23);
+            this.btnGüncelle.TabIndex = 8;
+            this.btnGüncelle.Text = "Güncelle";
+            this.btnGüncelle.UseVisualStyleBackColor = true;
+            this.btnGüncelle.Click += new System.EventHandler(this.btnGüncelle_Click);
             // 
-            // dateTimePicker1
+            // txtAciklama
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(132, 109);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 6;
+            this.txtAciklama.Location = new System.Drawing.Point(132, 148);
+            this.txtAciklama.Multiline = true;
+            this.txtAciklama.Name = "txtAciklama";
+            this.txtAciklama.Size = new System.Drawing.Size(200, 74);
+            this.txtAciklama.TabIndex = 7;
             // 
-            // textBox2
+            // dtpTarih
             // 
-            this.textBox2.Location = new System.Drawing.Point(132, 71);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 5;
+            this.dtpTarih.Location = new System.Drawing.Point(132, 109);
+            this.dtpTarih.Name = "dtpTarih";
+            this.dtpTarih.Size = new System.Drawing.Size(200, 20);
+            this.dtpTarih.TabIndex = 6;
             // 
-            // textBox1
+            // txtToplamTutar
             // 
-            this.textBox1.Location = new System.Drawing.Point(132, 34);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 4;
+            this.txtToplamTutar.Location = new System.Drawing.Point(132, 71);
+            this.txtToplamTutar.Name = "txtToplamTutar";
+            this.txtToplamTutar.Size = new System.Drawing.Size(100, 20);
+            this.txtToplamTutar.TabIndex = 5;
+            this.txtToplamTutar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtToplamTutar_KeyPress);
+            this.txtToplamTutar.Validating += new System.ComponentModel.CancelEventHandler(this.txtToplamTutar_Validating);
+            // 
+            // txtIcerik
+            // 
+            this.txtIcerik.Location = new System.Drawing.Point(132, 34);
+            this.txtIcerik.Name = "txtIcerik";
+            this.txtIcerik.Size = new System.Drawing.Size(200, 20);
+            this.txtIcerik.TabIndex = 4;
+            this.txtIcerik.Validating += new System.ComponentModel.CancelEventHandler(this.txtIcerik_Validating);
             // 
             // lblAciklama
             // 
@@ -156,11 +178,12 @@ namespace MuhasebeApp.UserUI.Forms
             // 
             // gbxFiltreleme
             // 
+            this.gbxFiltreleme.Controls.Add(this.btnFilterClear);
             this.gbxFiltreleme.Controls.Add(this.btnAra);
-            this.gbxFiltreleme.Controls.Add(this.dateTimePicker3);
+            this.gbxFiltreleme.Controls.Add(this.dtpFStartDate);
             this.gbxFiltreleme.Controls.Add(this.lblFIcerik);
-            this.gbxFiltreleme.Controls.Add(this.dateTimePicker2);
-            this.gbxFiltreleme.Controls.Add(this.textBox4);
+            this.gbxFiltreleme.Controls.Add(this.dtpFEndDate);
+            this.gbxFiltreleme.Controls.Add(this.txtFIcerik);
             this.gbxFiltreleme.Controls.Add(this.lblFTarihAralik);
             this.gbxFiltreleme.Controls.Add(this.lblFBaslangicTarihi);
             this.gbxFiltreleme.Controls.Add(this.lblBitişTarihi);
@@ -171,6 +194,16 @@ namespace MuhasebeApp.UserUI.Forms
             this.gbxFiltreleme.TabStop = false;
             this.gbxFiltreleme.Text = "Filtreleme";
             // 
+            // btnFilterClear
+            // 
+            this.btnFilterClear.Location = new System.Drawing.Point(46, 244);
+            this.btnFilterClear.Name = "btnFilterClear";
+            this.btnFilterClear.Size = new System.Drawing.Size(102, 23);
+            this.btnFilterClear.TabIndex = 53;
+            this.btnFilterClear.Text = "Filtreleleri Temizle";
+            this.btnFilterClear.UseVisualStyleBackColor = true;
+            this.btnFilterClear.Click += new System.EventHandler(this.btnFilterClear_Click);
+            // 
             // btnAra
             // 
             this.btnAra.Location = new System.Drawing.Point(231, 244);
@@ -179,13 +212,14 @@ namespace MuhasebeApp.UserUI.Forms
             this.btnAra.TabIndex = 51;
             this.btnAra.Text = "Ara";
             this.btnAra.UseVisualStyleBackColor = true;
+            this.btnAra.Click += new System.EventHandler(this.btnAra_Click);
             // 
-            // dateTimePicker3
+            // dtpFStartDate
             // 
-            this.dateTimePicker3.Location = new System.Drawing.Point(114, 118);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(181, 20);
-            this.dateTimePicker3.TabIndex = 47;
+            this.dtpFStartDate.Location = new System.Drawing.Point(114, 118);
+            this.dtpFStartDate.Name = "dtpFStartDate";
+            this.dtpFStartDate.Size = new System.Drawing.Size(181, 20);
+            this.dtpFStartDate.TabIndex = 47;
             // 
             // lblFIcerik
             // 
@@ -196,19 +230,19 @@ namespace MuhasebeApp.UserUI.Forms
             this.lblFIcerik.TabIndex = 0;
             this.lblFIcerik.Text = "İçeriğe Göre Ara: ";
             // 
-            // dateTimePicker2
+            // dtpFEndDate
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(114, 151);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(181, 20);
-            this.dateTimePicker2.TabIndex = 48;
+            this.dtpFEndDate.Location = new System.Drawing.Point(114, 151);
+            this.dtpFEndDate.Name = "dtpFEndDate";
+            this.dtpFEndDate.Size = new System.Drawing.Size(181, 20);
+            this.dtpFEndDate.TabIndex = 48;
             // 
-            // textBox4
+            // txtFIcerik
             // 
-            this.textBox4.Location = new System.Drawing.Point(84, 64);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(130, 20);
-            this.textBox4.TabIndex = 1;
+            this.txtFIcerik.Location = new System.Drawing.Point(84, 64);
+            this.txtFIcerik.Name = "txtFIcerik";
+            this.txtFIcerik.Size = new System.Drawing.Size(130, 20);
+            this.txtFIcerik.TabIndex = 1;
             // 
             // lblFTarihAralik
             // 
@@ -237,46 +271,55 @@ namespace MuhasebeApp.UserUI.Forms
             this.lblBitişTarihi.TabIndex = 5;
             this.lblBitişTarihi.Text = "Bitiş Tarihi";
             // 
+            // validationError
+            // 
+            this.validationError.ContainerControl = this;
+            // 
             // GiderListeleme
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1020, 607);
+            this.ClientSize = new System.Drawing.Size(819, 607);
             this.Controls.Add(this.gbxFiltreleme);
             this.Controls.Add(this.gbxGiderEkleme);
-            this.Controls.Add(this.dgvGiderListeleme);
+            this.Controls.Add(this.dgwGiderListeleme);
             this.Name = "GiderListeleme";
             this.Text = "GiderListeleme";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvGiderListeleme)).EndInit();
+            this.Load += new System.EventHandler(this.GiderListeleme_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgwGiderListeleme)).EndInit();
             this.gbxGiderEkleme.ResumeLayout(false);
             this.gbxGiderEkleme.PerformLayout();
             this.gbxFiltreleme.ResumeLayout(false);
             this.gbxFiltreleme.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.validationError)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgvGiderListeleme;
+        private System.Windows.Forms.DataGridView dgwGiderListeleme;
         private System.Windows.Forms.GroupBox gbxGiderEkleme;
-        private System.Windows.Forms.Button btnKaydet;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnGüncelle;
+        private System.Windows.Forms.TextBox txtAciklama;
+        private System.Windows.Forms.DateTimePicker dtpTarih;
+        private System.Windows.Forms.TextBox txtToplamTutar;
+        private System.Windows.Forms.TextBox txtIcerik;
         private System.Windows.Forms.Label lblAciklama;
         private System.Windows.Forms.Label lblTarih;
         private System.Windows.Forms.Label lblToplamTutar;
         private System.Windows.Forms.Label lblIcerik;
         private System.Windows.Forms.GroupBox gbxFiltreleme;
         private System.Windows.Forms.Button btnAra;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker3;
+        private System.Windows.Forms.DateTimePicker dtpFEndDate;
+        private System.Windows.Forms.DateTimePicker dtpFStartDate;
         private System.Windows.Forms.Label lblBitişTarihi;
         private System.Windows.Forms.Label lblFBaslangicTarihi;
         private System.Windows.Forms.Label lblFTarihAralik;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtFIcerik;
         private System.Windows.Forms.Label lblFIcerik;
+        private System.Windows.Forms.Button btnSil;
+        private System.Windows.Forms.ErrorProvider validationError;
+        private System.Windows.Forms.Button btnFilterClear;
     }
 }
