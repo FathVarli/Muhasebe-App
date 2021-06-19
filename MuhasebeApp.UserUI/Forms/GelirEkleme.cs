@@ -29,7 +29,10 @@ namespace MuhasebeApp.UserUI.Forms
         {
             cbxMalzemeAdi.DataSource = _malzemeService.GetAllMalzemeAdi().Data;
             cbxOdemeSekli.DataSource = getOdemeSekliList();
-            lblBirim.Text = _malzemeService.GetByName(cbxMalzemeAdi.Text).Data.Birim;
+            if (!string.IsNullOrEmpty(cbxMalzemeAdi.Text))
+            {
+                lblBirim.Text = _malzemeService.GetByName(cbxMalzemeAdi.Text).Data.Birim;
+            }
         }
 
         private void btnKaydet_Click(object sender, EventArgs e)
@@ -145,6 +148,11 @@ namespace MuhasebeApp.UserUI.Forms
             }
         }
 
-    
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            GelirHub gelirHub = new GelirHub();
+            gelirHub.Show();
+            this.Hide();
+        }
     }
 }

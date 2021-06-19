@@ -32,7 +32,18 @@ namespace MuhasebeApp.UserUI.Forms
                 Sifre = txtSifre.Text.Trim()
             };
            var result = _kullaniciService.Register(registerDto);
-            MessageBox.Show(result.Message);
+            if (result.Success)
+            {
+                MessageBox.Show(result.Message, "Muhasebe App", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Giris giris = new Giris();
+                giris.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show(result.Message, "Muhasebe App", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            
         }
     }
 }

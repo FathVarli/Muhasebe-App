@@ -26,6 +26,9 @@ namespace MuhasebeApp.UserUI.Forms
         private void MalzemeIslemleri_Load(object sender, EventArgs e)
         {
             LoadMalzemeList();
+            dgwMalzeme.Width =
+    dgwMalzeme.Columns.Cast<DataGridViewColumn>().Sum(x => x.Width)
+    + (dgwMalzeme.RowHeadersVisible ? dgwMalzeme.RowHeadersWidth : 0) + 3;
         }
 
         private void btnEkle_Click(object sender, EventArgs e)
@@ -193,6 +196,11 @@ namespace MuhasebeApp.UserUI.Forms
             txtBirimFiyati.Clear();
         }
 
-
+        private void bntBack_Click(object sender, EventArgs e)
+        {
+            HomePage hmPage = new HomePage();
+            hmPage.Show();
+            this.Hide();
+        }
     }
 }

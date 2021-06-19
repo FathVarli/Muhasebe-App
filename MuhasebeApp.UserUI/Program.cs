@@ -17,7 +17,11 @@ namespace MuhasebeApp.UserUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+<<<<<<< HEAD
             Application.Run(new HomePage());
+=======
+            Application.Run(new Giris());
+>>>>>>> b5b3548c601f740561f941a89a0dd7a8ccf8589c
         }
     }
 }

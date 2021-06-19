@@ -25,8 +25,11 @@ namespace MuhasebeApp.UserUI.Forms
         private void GiderListeleme_Load(object sender, EventArgs e)
         {
             dtpFStartDate.Value = new DateTime(2000, 01, 01);
-            dtpFEndDate.Value = new DateTime(2100, 12, 31);
+            dtpFEndDate.Value = new DateTime(2100, 12, 31);            
             LoadGider();
+            dgwGiderListeleme.Width =
+    dgwGiderListeleme.Columns.Cast<DataGridViewColumn>().Sum(x => x.Width)
+    + (dgwGiderListeleme.RowHeadersVisible ? dgwGiderListeleme.RowHeadersWidth : 0) + 3;
         }
 
         void LoadGider()
@@ -57,25 +60,28 @@ namespace MuhasebeApp.UserUI.Forms
             {
                 validationError.Clear();
                 var id = Convert.ToInt32(dgwGiderListeleme.CurrentRow.Cells[0].Value.ToString());
-                var newGider = new Gider
+                if (id > 0)
                 {
-                    Icerik = txtIcerik.Text,
-                    ToplamTutar = Convert.ToDecimal(txtToplamTutar.Text),
-                    Tarih = setDate(dtpTarih.Value),
-                    Aciklama = txtAciklama.Text
-                };
-                DialogResult secenek = MessageBox.Show("Güncellemek istiyor musunuz?", "Muhasebe App", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (secenek == DialogResult.Yes)
-                {
-                    var result = _giderService.UpdateById(id, newGider);
-                    if (result.Success)
+                    var newGider = new Gider
                     {
-                        MessageBox.Show(result.Message, "Muhasebe App", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LoadGider();
-                    }
-                    else
+                        Icerik = txtIcerik.Text,
+                        ToplamTutar = Convert.ToDecimal(txtToplamTutar.Text),
+                        Tarih = setDate(dtpTarih.Value),
+                        Aciklama = txtAciklama.Text
+                    };
+                    DialogResult secenek = MessageBox.Show("Güncellemek istiyor musunuz?", "Muhasebe App", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (secenek == DialogResult.Yes)
                     {
-                        MessageBox.Show(result.Message, "Muhasebe App", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        var result = _giderService.UpdateById(id, newGider);
+                        if (result.Success)
+                        {
+                            MessageBox.Show(result.Message, "Muhasebe App", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadGider();
+                        }
+                        else
+                        {
+                            MessageBox.Show(result.Message, "Muhasebe App", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
             }
@@ -132,6 +138,7 @@ namespace MuhasebeApp.UserUI.Forms
         {
             dtpFStartDate.Value = new DateTime(2000, 01, 01);
             dtpFEndDate.Value = new DateTime(2100, 12, 31);
+            LoadGider();
         }
 
         private DateTime setDate(DateTime date)
@@ -179,6 +186,13 @@ namespace MuhasebeApp.UserUI.Forms
             {
                 e.Handled = true;
             }
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            GiderHub giderHub = new GiderHub();
+            giderHub.Show();
+            this.Hide();
         }
     }
 }

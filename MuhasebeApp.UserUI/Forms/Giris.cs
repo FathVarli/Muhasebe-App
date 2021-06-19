@@ -42,13 +42,13 @@ namespace MuhasebeApp.UserUI.Forms
             var result = _kullaniciService.Login(loginDto);
             if (result.Success)
             {
-                GelirEkleme gelir = new GelirEkleme();
-                gelir.Show();
+                HomePage hPage = new HomePage();
+                hPage.Show();
                 this.Hide();
             }
             else
             {
-                MessageBox.Show(result.Message);
+                MessageBox.Show(result.Message,"Muhasebe App", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

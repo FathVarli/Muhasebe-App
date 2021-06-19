@@ -108,8 +108,10 @@ namespace MuhasebeApp.UserUI.Forms
             this.Controls.Add(this.btnGiris);
             this.Controls.Add(this.txtSifre);
             this.Controls.Add(this.txtTc);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "Giris";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Giris";
             this.Load += new System.EventHandler(this.Giris_Load);
             this.ResumeLayout(false);

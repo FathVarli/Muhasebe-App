@@ -40,5 +40,27 @@ namespace MuhasebeApp.UserUI.Forms
                 lblToplamZararMoney.Text = result.Data.ToplamZarar.ToString();
             }
         }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            HomePage hmPage = new HomePage();
+            hmPage.Show();
+            this.Hide();
+        }
+
+        private void txtYil_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+    (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

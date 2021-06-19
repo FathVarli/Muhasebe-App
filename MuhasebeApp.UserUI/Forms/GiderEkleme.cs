@@ -81,5 +81,12 @@ namespace MuhasebeApp.UserUI.Forms
         {
             return new DateTime(date.Year, date.Month, date.Day);
         }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            GiderHub giderHub = new GiderHub();
+            giderHub.Show();
+            this.Hide();
+        }
     }
 }

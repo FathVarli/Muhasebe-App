@@ -22,6 +22,5 @@ namespace MuhasebeApp.UserUI.Forms
             lblSaat.Text = DateTime.Now.ToLongTimeString();
             lblTarih.Text = DateTime.Now.ToLongDateString();
         }
-
     }
 }
