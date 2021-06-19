@@ -140,8 +140,10 @@ namespace MuhasebeApp.UserUI.Forms
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtSifre);
             this.Controls.Add(this.txtTc);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "Kayit";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Kayit";
             this.ResumeLayout(false);
             this.PerformLayout();

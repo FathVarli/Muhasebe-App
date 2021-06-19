@@ -63,6 +63,7 @@ namespace Business.Concrete
                 };
                 gelirDtoList.Add(gelirListDto);
             }
+            gelirDtoList = gelirDtoList.OrderBy(g => g.Id).ToList();
             return new SuccessDataResult<List<GelirListDto>>(gelirDtoList);
         }
 

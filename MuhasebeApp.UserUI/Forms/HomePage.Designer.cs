@@ -42,65 +42,77 @@ namespace MuhasebeApp.UserUI.Forms
             // lblSaat
             // 
             this.lblSaat.AutoSize = true;
-            this.lblSaat.Location = new System.Drawing.Point(711, 68);
+            this.lblSaat.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblSaat.Location = new System.Drawing.Point(689, 44);
             this.lblSaat.Name = "lblSaat";
-            this.lblSaat.Size = new System.Drawing.Size(29, 13);
+            this.lblSaat.Size = new System.Drawing.Size(34, 17);
             this.lblSaat.TabIndex = 0;
             this.lblSaat.Text = "Saat";
             // 
             // btnGelir
             // 
-            this.btnGelir.Location = new System.Drawing.Point(76, 180);
+            this.btnGelir.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnGelir.Location = new System.Drawing.Point(118, 174);
             this.btnGelir.Name = "btnGelir";
-            this.btnGelir.Size = new System.Drawing.Size(75, 23);
+            this.btnGelir.Size = new System.Drawing.Size(100, 60);
             this.btnGelir.TabIndex = 1;
             this.btnGelir.Text = "Gelir Sayfasi";
             this.btnGelir.UseVisualStyleBackColor = true;
+            this.btnGelir.Click += new System.EventHandler(this.btnGelir_Click);
             // 
             // btnGider
             // 
-            this.btnGider.Location = new System.Drawing.Point(208, 180);
+            this.btnGider.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnGider.Location = new System.Drawing.Point(264, 174);
             this.btnGider.Name = "btnGider";
-            this.btnGider.Size = new System.Drawing.Size(110, 23);
+            this.btnGider.Size = new System.Drawing.Size(100, 60);
             this.btnGider.TabIndex = 2;
             this.btnGider.Text = "Gider Sayfasi";
             this.btnGider.UseVisualStyleBackColor = true;
+            this.btnGider.Click += new System.EventHandler(this.btnGider_Click);
             // 
             // btnMalzeme
             // 
-            this.btnMalzeme.Location = new System.Drawing.Point(355, 180);
+            this.btnMalzeme.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnMalzeme.Location = new System.Drawing.Point(410, 174);
             this.btnMalzeme.Name = "btnMalzeme";
-            this.btnMalzeme.Size = new System.Drawing.Size(110, 23);
+            this.btnMalzeme.Size = new System.Drawing.Size(100, 60);
             this.btnMalzeme.TabIndex = 3;
             this.btnMalzeme.Text = "Malzeme Sayfasi";
             this.btnMalzeme.UseVisualStyleBackColor = true;
+            this.btnMalzeme.Click += new System.EventHandler(this.btnMalzeme_Click);
             // 
             // btnRaporlama
             // 
-            this.btnRaporlama.Location = new System.Drawing.Point(524, 180);
+            this.btnRaporlama.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnRaporlama.Location = new System.Drawing.Point(556, 174);
             this.btnRaporlama.Name = "btnRaporlama";
-            this.btnRaporlama.Size = new System.Drawing.Size(110, 23);
+            this.btnRaporlama.Size = new System.Drawing.Size(100, 60);
             this.btnRaporlama.TabIndex = 4;
             this.btnRaporlama.Text = "Raporlama Sayfasi";
             this.btnRaporlama.UseVisualStyleBackColor = true;
+            this.btnRaporlama.Click += new System.EventHandler(this.btnRaporlama_Click);
             // 
             // lblTarih
             // 
             this.lblTarih.AutoSize = true;
-            this.lblTarih.Location = new System.Drawing.Point(711, 42);
+            this.lblTarih.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblTarih.Location = new System.Drawing.Point(638, 18);
             this.lblTarih.Name = "lblTarih";
-            this.lblTarih.Size = new System.Drawing.Size(31, 13);
+            this.lblTarih.Size = new System.Drawing.Size(38, 17);
             this.lblTarih.TabIndex = 5;
             this.lblTarih.Text = "Tarih";
             // 
             // timer1
             // 
+            this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // HomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.lblTarih);
             this.Controls.Add(this.btnRaporlama);
@@ -108,7 +120,10 @@ namespace MuhasebeApp.UserUI.Forms
             this.Controls.Add(this.btnGider);
             this.Controls.Add(this.btnGelir);
             this.Controls.Add(this.lblSaat);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "HomePage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HomePage";
             this.ResumeLayout(false);
             this.PerformLayout();

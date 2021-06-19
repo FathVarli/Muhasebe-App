@@ -146,6 +146,12 @@
     <Compile Include="Forms\GelirEkleme.Designer.cs">
       <DependentUpon>GelirEkleme.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\GelirHub.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GelirHub.Designer.cs">
+      <DependentUpon>GelirHub.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\GelirListeleme.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,6 +163,12 @@
     </Compile>
     <Compile Include="Forms\GiderEkleme.Designer.cs">
       <DependentUpon>GiderEkleme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GiderHub.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GiderHub.Designer.cs">
+      <DependentUpon>GiderHub.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\GiderListeleme.cs">
       <SubType>Form</SubType>
@@ -188,22 +200,28 @@
     <Compile Include="Forms\Kayit.Designer.cs">
       <DependentUpon>Kayit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MalzemeEkleme.cs">
+    <Compile Include="Forms\MalzemeIslemleri.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\MalzemeEkleme.Designer.cs">
-      <DependentUpon>MalzemeEkleme.cs</DependentUpon>
+    <Compile Include="Forms\MalzemeIslemleri.Designer.cs">
+      <DependentUpon>MalzemeIslemleri.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\GelirEkleme.resx">
       <DependentUpon>GelirEkleme.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GelirHub.resx">
+      <DependentUpon>GelirHub.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\GelirListeleme.resx">
       <DependentUpon>GelirListeleme.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\GiderEkleme.resx">
       <DependentUpon>GiderEkleme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GiderHub.resx">
+      <DependentUpon>GiderHub.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\GiderListeleme.resx">
       <DependentUpon>GiderListeleme.cs</DependentUpon>
@@ -220,8 +238,8 @@
     <EmbeddedResource Include="Forms\Kayit.resx">
       <DependentUpon>Kayit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MalzemeEkleme.resx">
-      <DependentUpon>MalzemeEkleme.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\MalzemeIslemleri.resx">
+      <DependentUpon>MalzemeIslemleri.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

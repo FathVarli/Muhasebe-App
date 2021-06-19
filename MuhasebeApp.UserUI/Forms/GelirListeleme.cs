@@ -32,10 +32,16 @@ namespace MuhasebeApp.UserUI.Forms
             cbxOdemeSekli.DataSource = getOdemeSekliList();
             cbxFOdemeSekli.DataSource = getOdemeSekliList();
             cbxFOdemeSekli.SelectedIndex = -1;
-            lblBirim.Text = _malzemeService.GetByName(cbxMalzemeAdi.Text).Data.Birim;
+            if (!string.IsNullOrEmpty(cbxMalzemeAdi.Text))
+            {
+                lblBirim.Text = _malzemeService.GetByName(cbxMalzemeAdi.Text).Data.Birim;
+            }            
             dtpFStartDate.Value = new DateTime(2000,01,01);
             dtpFEndDate.Value = new DateTime(2100,12,31);
             LoadGelir();
+            dgwGelirListeleme.Width =
+    dgwGelirListeleme.Columns.Cast<DataGridViewColumn>().Sum(x => x.Width)
+    + (dgwGelirListeleme.RowHeadersVisible ? dgwGelirListeleme.RowHeadersWidth : 0) + 3;
         }
 
         private void LoadGelir()
@@ -241,6 +247,11 @@ namespace MuhasebeApp.UserUI.Forms
             return new DateTime(date.Year, date.Month, date.Day);
         }
 
-
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            GelirHub gelirHub = new GelirHub();
+            gelirHub.Show();
+            this.Hide();
+        }
     }
 }

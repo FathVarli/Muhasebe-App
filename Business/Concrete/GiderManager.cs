@@ -40,7 +40,8 @@ namespace Business.Concrete
 
         public IDataResult<List<Gider>> GetAll()
         {
-            return new SuccessDataResult<List<Gider>>(_giderDal.GetList());
+            var giderList = _giderDal.GetList().OrderBy(g => g.Id).ToList();
+            return new SuccessDataResult<List<Gider>>(giderList);
         }
 
         public IDataResult<List<Gider>> GetAllByFilter(GiderFilterDto giderFilterDto)
