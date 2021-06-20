@@ -73,24 +73,57 @@ namespace MuhasebeApp.UserUI.Forms
                 }
                 else
                 {
+                    if (dgwGelirListeleme.CurrentRow != null)
+                    {
+                        var id = Convert.ToInt32(dgwGelirListeleme.CurrentRow.Cells[0].Value.ToString());
+                        if (id > 0)
+                        {
+                            var newGelir = new Gelir
+                            {
+                                MalzemeId = malzeme.Data.Id,
+                                Tarih = setDate(dtpTarih.Value),
+                                AlinanTutar = Convert.ToDecimal(txtAlinanTutar.Text),
+                                ToplamTutar = Convert.ToDecimal(txtToplamTutar.Text),
+                                Adet = Convert.ToInt32(txtAdet.Text),
+                                Aciklama = txtAciklama.Text,
+                                OdemeSekli = cbxOdemeSekli.Text
+
+                            };
+                            DialogResult secenek = MessageBox.Show("Güncellemek istiyor musunuz?", "Muhasebe App", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                            if (secenek == DialogResult.Yes)
+                            {
+                                var result = _gelirService.UpdateById(id, newGelir);
+                                if (result.Success)
+                                {
+                                    MessageBox.Show(result.Message, "Muhasebe App", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    LoadGelir();
+                                }
+                                else
+                                {
+                                    MessageBox.Show(result.Message, "Muhasebe App", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
+                        }
+                    }
+                    
+                }
+            }
+        }
+
+        private void btnSil_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtToplamTutar.Text))
+            {
+                validationError.Clear();
+                if (dgwGelirListeleme.CurrentRow != null)
+                {
                     var id = Convert.ToInt32(dgwGelirListeleme.CurrentRow.Cells[0].Value.ToString());
                     if (id > 0)
                     {
-                        var newGelir = new Gelir
-                        {
-                            MalzemeId = malzeme.Data.Id,
-                            Tarih = setDate(dtpTarih.Value),
-                            AlinanTutar = Convert.ToDecimal(txtAlinanTutar.Text),
-                            ToplamTutar = Convert.ToDecimal(txtToplamTutar.Text),
-                            Adet = Convert.ToInt32(txtAdet.Text),
-                            Aciklama = txtAciklama.Text,
-                            OdemeSekli = cbxOdemeSekli.Text
-
-                        };
-                        DialogResult secenek = MessageBox.Show("Güncellemek istiyor musunuz?", "Muhasebe App", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        DialogResult secenek = MessageBox.Show("Silmek istiyor musunuz?", "Muhasebe App", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (secenek == DialogResult.Yes)
                         {
-                            var result = _gelirService.UpdateById(id, newGelir);
+                            var result = _gelirService.DeleteById(id);
                             if (result.Success)
                             {
                                 MessageBox.Show(result.Message, "Muhasebe App", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -101,35 +134,10 @@ namespace MuhasebeApp.UserUI.Forms
                                 MessageBox.Show(result.Message, "Muhasebe App", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
+
                     }
                 }
-            }
-        }
-
-        private void btnSil_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(txtToplamTutar.Text))
-            {
-                validationError.Clear();
-                var id = Convert.ToInt32(dgwGelirListeleme.CurrentRow.Cells[0].Value.ToString());
-                if (id > 0)
-                {
-                    DialogResult secenek = MessageBox.Show("Silmek istiyor musunuz?", "Muhasebe App", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (secenek == DialogResult.Yes)
-                    {
-                        var result = _gelirService.DeleteById(id);
-                        if (result.Success)
-                        {
-                            MessageBox.Show(result.Message, "Muhasebe App", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            LoadGelir();
-                        }
-                        else
-                        {
-                            MessageBox.Show(result.Message, "Muhasebe App", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-
-                }
+                
             }
         }
 

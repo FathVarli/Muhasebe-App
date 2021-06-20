@@ -100,24 +100,27 @@ namespace MuhasebeApp.UserUI.Forms
             if (!string.IsNullOrEmpty(txtIcerik.Text))
             {
                 validationError.Clear();
-                var id = Convert.ToInt32(dgwGiderListeleme.CurrentRow.Cells[0].Value.ToString());
-                if (id > 0)
+                if (dgwGiderListeleme.CurrentRow != null)
                 {
-                    DialogResult secenek = MessageBox.Show("Silmek istiyor musunuz?", "Muhasebe App", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (secenek == DialogResult.Yes)
+                    var id = Convert.ToInt32(dgwGiderListeleme.CurrentRow.Cells[0].Value.ToString());
+                    if (id > 0)
                     {
-                        var result = _giderService.DeleteById(id);
-                        if (result.Success)
+                        DialogResult secenek = MessageBox.Show("Silmek istiyor musunuz?", "Muhasebe App", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (secenek == DialogResult.Yes)
                         {
-                            MessageBox.Show(result.Message, "Muhasebe App", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            LoadGider();
+                            var result = _giderService.DeleteById(id);
+                            if (result.Success)
+                            {
+                                MessageBox.Show(result.Message, "Muhasebe App", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                LoadGider();
+                            }
+                            else
+                            {
+                                MessageBox.Show(result.Message, "Muhasebe App", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
-                        else
-                        {
-                            MessageBox.Show(result.Message, "Muhasebe App", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
 
+                    }
                 }
             }
         }
