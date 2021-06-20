@@ -37,7 +37,6 @@ namespace MuhasebeApp.UserUI.Forms
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.chartTotalByMonth = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartMalzemeByMonth = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.gbxTotal = new System.Windows.Forms.GroupBox();
@@ -123,9 +122,6 @@ namespace MuhasebeApp.UserUI.Forms
             this.chartMalzemeByMonth.Size = new System.Drawing.Size(510, 310);
             this.chartMalzemeByMonth.TabIndex = 1;
             this.chartMalzemeByMonth.Text = "chart2";
-            title2.Name = "Title1";
-            title2.Text = "Aylık Satılan Malzemeler";
-            this.chartMalzemeByMonth.Titles.Add(title2);
             // 
             // gbxTotal
             // 

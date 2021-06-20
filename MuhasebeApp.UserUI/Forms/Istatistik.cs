@@ -25,11 +25,11 @@ namespace MuhasebeApp.UserUI.Forms
         {
             CalculateAllGelirGider();
             cbxAy.DataSource = Aylar.getAllAyName();
-            cbxAy.SelectedIndex = DateTime.Now.Month-1;
+            cbxAy.SelectedIndex = DateTime.Now.Month - 1;
             txtYil.Text = DateTime.Now.Year.ToString();
             LoadChart();
         }
-        
+
         private void CalculateAllGelirGider()
         {
             var result = _raporService.CalculateToplamGelirGider();
@@ -66,7 +66,7 @@ namespace MuhasebeApp.UserUI.Forms
         {
             int monthId = Aylar.getAyByAd(cbxAy.Text).Id;
             int year = Convert.ToInt32(txtYil.Text);
-            var result = _raporService.CalculataToplamGelirGiderByMonthAndYear(monthId,year);
+            var result = _raporService.CalculataToplamGelirGiderByMonthAndYear(monthId, year);
             if (result.Success)
             {
                 lblAylikGelirMoney.Text = result.Data.ToplamGelir.ToString();
@@ -93,9 +93,13 @@ namespace MuhasebeApp.UserUI.Forms
             var malzemeResult = _raporService.CalculataTotalGelirByMalzemeName();
             if (malzemeResult.Success)
             {
+
+                var ay = Aylar.getAyById(DateTime.Now.Month);
                 var resultList = malzemeResult.Data.OrderBy(m => m.Total);
+                chartMalzemeByMonth.Titles.Add($"{ay.Adi} Ayı Satılan Malzemeler");
                 foreach (var malzeme in resultList)
                 {
+
                     chartMalzemeByMonth.Series["AylikSatilanMalzemeler"].Points.AddXY(malzeme.MalzemeAdi, malzeme.Total);
                 }
             }

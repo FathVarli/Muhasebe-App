@@ -135,13 +135,14 @@ namespace MuhasebeApp.UserUI.Forms
             // 
             // btnBack
             // 
+            this.btnBack.BackColor = System.Drawing.Color.White;
             this.btnBack.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnBack.Location = new System.Drawing.Point(12, 413);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(80, 25);
             this.btnBack.TabIndex = 20;
             this.btnBack.Text = "Geri Dön";
-            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // Kayit
