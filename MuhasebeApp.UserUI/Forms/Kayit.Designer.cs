@@ -40,6 +40,7 @@ namespace MuhasebeApp.UserUI.Forms
             this.txtAd = new System.Windows.Forms.TextBox();
             this.btnKaydet = new System.Windows.Forms.Button();
             this.validationError = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnBack = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.validationError)).BeginInit();
             this.SuspendLayout();
             // 
@@ -132,12 +133,24 @@ namespace MuhasebeApp.UserUI.Forms
             // 
             this.validationError.ContainerControl = this;
             // 
+            // btnBack
+            // 
+            this.btnBack.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnBack.Location = new System.Drawing.Point(12, 413);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(80, 25);
+            this.btnBack.TabIndex = 20;
+            this.btnBack.Text = "Geri Dön";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // Kayit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnKaydet);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);
@@ -170,5 +183,6 @@ namespace MuhasebeApp.UserUI.Forms
         private System.Windows.Forms.TextBox txtAd;
         private System.Windows.Forms.Button btnKaydet;
         private System.Windows.Forms.ErrorProvider validationError;
+        private System.Windows.Forms.Button btnBack;
     }
 }

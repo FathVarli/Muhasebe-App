@@ -90,5 +90,12 @@ namespace MuhasebeApp.UserUI.Forms
 
             return true;
         }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            Giris giris = new Giris();
+            giris.Show();
+            this.Hide();
+        }
     }
 }
