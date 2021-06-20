@@ -48,6 +48,7 @@ namespace MuhasebeApp.UserUI.Forms
             this.label1 = new System.Windows.Forms.Label();
             this.lblAdaGoreArama = new System.Windows.Forms.Label();
             this.validationError = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgwMalzeme)).BeginInit();
             this.gbxEkleGuncelle.SuspendLayout();
             this.gbxFiltreleme.SuspendLayout();
@@ -91,7 +92,6 @@ namespace MuhasebeApp.UserUI.Forms
             this.txtAd.Name = "txtAd";
             this.txtAd.Size = new System.Drawing.Size(100, 21);
             this.txtAd.TabIndex = 3;
-            this.txtAd.Validating += new System.ComponentModel.CancelEventHandler(this.txtAd_Validating);
             // 
             // txtBirim
             // 
@@ -100,7 +100,6 @@ namespace MuhasebeApp.UserUI.Forms
             this.txtBirim.Name = "txtBirim";
             this.txtBirim.Size = new System.Drawing.Size(100, 21);
             this.txtBirim.TabIndex = 4;
-            this.txtBirim.Validating += new System.ComponentModel.CancelEventHandler(this.txtBirim_Validating);
             // 
             // txtBirimFiyati
             // 
@@ -110,7 +109,6 @@ namespace MuhasebeApp.UserUI.Forms
             this.txtBirimFiyati.Size = new System.Drawing.Size(100, 21);
             this.txtBirimFiyati.TabIndex = 5;
             this.txtBirimFiyati.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBirimFiyati_KeyPress);
-            this.txtBirimFiyati.Validating += new System.ComponentModel.CancelEventHandler(this.txtBirimFiyati_Validating);
             // 
             // btnEkle
             // 
@@ -136,11 +134,14 @@ namespace MuhasebeApp.UserUI.Forms
             // 
             // dgwMalzeme
             // 
+            this.dgwMalzeme.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgwMalzeme.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgwMalzeme.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgwMalzeme.Location = new System.Drawing.Point(154, 37);
             this.dgwMalzeme.Name = "dgwMalzeme";
             this.dgwMalzeme.ReadOnly = true;
+            this.dgwMalzeme.RowHeadersVisible = false;
+            this.dgwMalzeme.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgwMalzeme.Size = new System.Drawing.Size(188, 150);
             this.dgwMalzeme.TabIndex = 10;
             this.dgwMalzeme.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwMalzeme_CellClick);
@@ -158,6 +159,7 @@ namespace MuhasebeApp.UserUI.Forms
             // 
             // gbxEkleGuncelle
             // 
+            this.gbxEkleGuncelle.Controls.Add(this.label2);
             this.gbxEkleGuncelle.Controls.Add(this.btnGuncelle);
             this.gbxEkleGuncelle.Controls.Add(this.txtAd);
             this.gbxEkleGuncelle.Controls.Add(this.btnSil);
@@ -244,6 +246,16 @@ namespace MuhasebeApp.UserUI.Forms
             // 
             this.validationError.ContainerControl = this;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label2.Location = new System.Drawing.Point(202, 130);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(23, 15);
+            this.label2.TabIndex = 20;
+            this.label2.Text = "TL";
+            // 
             // MalzemeIslemleri
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -290,5 +302,6 @@ namespace MuhasebeApp.UserUI.Forms
         private System.Windows.Forms.Label lblAdaGoreArama;
         private System.Windows.Forms.ErrorProvider validationError;
         private System.Windows.Forms.Button btnGuncelle;
+        private System.Windows.Forms.Label label2;
     }
 }

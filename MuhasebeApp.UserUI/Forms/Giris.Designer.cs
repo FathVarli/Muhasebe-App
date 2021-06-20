@@ -29,12 +29,15 @@ namespace MuhasebeApp.UserUI.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.txtTc = new System.Windows.Forms.TextBox();
             this.txtSifre = new System.Windows.Forms.TextBox();
             this.btnGiris = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnKayit = new System.Windows.Forms.Button();
+            this.validationError = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.validationError)).BeginInit();
             this.SuspendLayout();
             // 
             // txtTc
@@ -96,6 +99,10 @@ namespace MuhasebeApp.UserUI.Forms
             this.btnKayit.UseVisualStyleBackColor = true;
             this.btnKayit.Click += new System.EventHandler(this.btnKayit_Click);
             // 
+            // validationError
+            // 
+            this.validationError.ContainerControl = this;
+            // 
             // Giris
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -114,6 +121,7 @@ namespace MuhasebeApp.UserUI.Forms
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Giris";
             this.Load += new System.EventHandler(this.Giris_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.validationError)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -127,5 +135,6 @@ namespace MuhasebeApp.UserUI.Forms
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnKayit;
+        private System.Windows.Forms.ErrorProvider validationError;
     }
 }

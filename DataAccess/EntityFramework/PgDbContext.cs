@@ -28,7 +28,7 @@ namespace MuhasebeApp.DataAccess.EntityFramework
         .Entity<V_Malzeme_Chart>(eb =>
              {
                  eb.HasNoKey();
-                 eb.ToView("v_bos_sandalye");
+                 eb.ToView("v_malzeme_chart");
              });
 
 

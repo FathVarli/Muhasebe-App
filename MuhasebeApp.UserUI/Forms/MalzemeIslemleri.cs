@@ -26,14 +26,13 @@ namespace MuhasebeApp.UserUI.Forms
         private void MalzemeIslemleri_Load(object sender, EventArgs e)
         {
             LoadMalzemeList();
-            dgwMalzeme.Width =
-    dgwMalzeme.Columns.Cast<DataGridViewColumn>().Sum(x => x.Width)
-    + (dgwMalzeme.RowHeadersVisible ? dgwMalzeme.RowHeadersWidth : 0) + 3;
+            dgwMalzeme.Width = dgwMalzeme.Columns.Cast<DataGridViewColumn>().Sum(x => x.Width) + (dgwMalzeme.RowHeadersVisible ? dgwMalzeme.RowHeadersWidth : 0) + 3;
+            LoadField();
         }
 
         private void btnEkle_Click(object sender, EventArgs e)
         {
-            if (ValidateChildren(ValidationConstraints.Enabled))
+            if (ValidationRules())
             {
                 validationError.Clear();
 
@@ -60,7 +59,7 @@ namespace MuhasebeApp.UserUI.Forms
 
         private void btnGuncelle_Click(object sender, EventArgs e)
         {
-            if (ValidateChildren(ValidationConstraints.Enabled))
+            if (ValidationRules())
             {
                 validationError.Clear();
                 var malzeme = new Malzeme
@@ -69,18 +68,29 @@ namespace MuhasebeApp.UserUI.Forms
                     Birim = txtBirim.Text.ToUpper(),
                     BirimFiyat = Convert.ToDecimal(txtBirimFiyati.Text)
                 };
-                int id = Convert.ToInt32(dgwMalzeme.CurrentRow.Cells[0].Value);
-                var result = _malzemeService.UpdateById(id, malzeme);
-                if (result.Success)
+                if (dgwMalzeme.CurrentRow != null)
                 {
-                    MessageBox.Show(result.Message, "Muhasebe App", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadMalzemeList();
-                    ClearField();
+                    int id = Convert.ToInt32(dgwMalzeme.CurrentRow.Cells[0].Value);
+                    if (id > 0)
+                    {
+                        DialogResult secenek = MessageBox.Show("Güncellemek istiyor musunuz?", "Muhasebe App", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (secenek == DialogResult.Yes)
+                        {
+                            var result = _malzemeService.UpdateById(id, malzeme);
+                            if (result.Success)
+                            {
+                                MessageBox.Show(result.Message, "Muhasebe App", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                LoadMalzemeList();
+                                ClearField();
+                            }
+                            else
+                            {
+                                MessageBox.Show(result.Message, "Muhasebe App", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
                 }
-                else
-                {
-                    MessageBox.Show(result.Message, "Muhasebe App", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+
 
             }
         }
@@ -95,8 +105,8 @@ namespace MuhasebeApp.UserUI.Forms
                 {
                     _malzemeService.DeleteById(Convert.ToInt32(dgwMalzeme.CurrentRow.Cells[0].Value));
                     MessageBox.Show("Başarıyla Silinmiştir!", "Muhasebe App", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadMalzemeList();
                     ClearField();
+                    LoadMalzemeList();
 
                 }
             }
@@ -120,6 +130,14 @@ namespace MuhasebeApp.UserUI.Forms
         {
             if (dgwMalzeme.CurrentCell != null)
             {
+                LoadField();
+            }
+        }
+
+        private void LoadField()
+        {
+            if (dgwMalzeme.CurrentRow != null)
+            {
                 txtAd.Text = dgwMalzeme.CurrentRow.Cells[1].Value.ToString();
                 txtBirim.Text = dgwMalzeme.CurrentRow.Cells[2].Value.ToString();
                 txtBirimFiyati.Text = dgwMalzeme.CurrentRow.Cells[3].Value.ToString();
@@ -135,6 +153,7 @@ namespace MuhasebeApp.UserUI.Forms
             else
             {
                 LoadMalzemeList();
+
             }
         }
 
@@ -143,38 +162,35 @@ namespace MuhasebeApp.UserUI.Forms
             var result = _malzemeService.GetAll();
             if (result.Success)
             {
-                dgwMalzeme.DataSource = result.Data;
+                dgwMalzeme.DataSource = result.Data.OrderBy(m => m.Id).ToList();
+                LoadField();
             }
         }
 
-        private void txtAd_Validating(object sender, CancelEventArgs e)
+        private bool ValidationRules()
         {
             if (string.IsNullOrEmpty(txtAd.Text))
             {
-                e.Cancel = true;
                 txtAd.Focus();
                 validationError.SetError(txtAd, "Malzeme Adı Boş Bırakılamaz!");
+                return false;
             }
-        }
 
-        private void txtBirim_Validating(object sender, CancelEventArgs e)
-        {
             if (string.IsNullOrEmpty(txtBirim.Text))
             {
-                e.Cancel = true;
                 txtBirim.Focus();
                 validationError.SetError(txtBirim, "Malzeme Birimi Boş Bırakılamaz!");
+                return false;
             }
-        }
 
-        private void txtBirimFiyati_Validating(object sender, CancelEventArgs e)
-        {
             if (string.IsNullOrEmpty(txtBirimFiyati.Text))
             {
-                e.Cancel = true;
                 txtBirimFiyati.Focus();
                 validationError.SetError(txtBirimFiyati, "Malzeme Birim Fiyatı Boş Bırakılamaz!");
+                return false;
             }
+
+            return true;
         }
 
         private void txtBirimFiyati_KeyPress(object sender, KeyPressEventArgs e)
@@ -202,5 +218,6 @@ namespace MuhasebeApp.UserUI.Forms
             hmPage.Show();
             this.Hide();
         }
+
     }
 }

@@ -74,12 +74,15 @@ namespace MuhasebeApp.UserUI.Forms
             // 
             // dgwGelirListeleme
             // 
+            this.dgwGelirListeleme.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgwGelirListeleme.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgwGelirListeleme.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgwGelirListeleme.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2;
             this.dgwGelirListeleme.Location = new System.Drawing.Point(17, 12);
             this.dgwGelirListeleme.Name = "dgwGelirListeleme";
             this.dgwGelirListeleme.ReadOnly = true;
+            this.dgwGelirListeleme.RowHeadersVisible = false;
+            this.dgwGelirListeleme.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgwGelirListeleme.Size = new System.Drawing.Size(236, 150);
             this.dgwGelirListeleme.TabIndex = 0;
             this.dgwGelirListeleme.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwGelirListeleme_CellClick);
@@ -163,7 +166,6 @@ namespace MuhasebeApp.UserUI.Forms
             this.txtAdet.Size = new System.Drawing.Size(64, 21);
             this.txtAdet.TabIndex = 44;
             this.txtAdet.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAdet_KeyPress);
-            this.txtAdet.Validating += new System.ComponentModel.CancelEventHandler(this.txtAdet_Validating);
             // 
             // txtAciklama
             // 
@@ -192,7 +194,6 @@ namespace MuhasebeApp.UserUI.Forms
             this.txtAlinanTutar.Size = new System.Drawing.Size(64, 21);
             this.txtAlinanTutar.TabIndex = 48;
             this.txtAlinanTutar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAlinanTutar_KeyPress);
-            this.txtAlinanTutar.Validating += new System.ComponentModel.CancelEventHandler(this.txtAlinanTutar_Validating);
             // 
             // lblAdet
             // 

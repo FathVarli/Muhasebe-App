@@ -9,6 +9,7 @@ namespace Entity.Dto
     public class YillikChartToplamGelirGiderDto
     {
         public string AyAdi { get; set; }
+        public int AyId { get; set; }
         public decimal ToplamGelir { get; set; }
         public decimal ToplamGider { get; set; }
     }

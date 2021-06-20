@@ -27,6 +27,7 @@ namespace MuhasebeApp.UserUI.Forms
             cbxAy.DataSource = Aylar.getAllAyName();
             cbxAy.SelectedIndex = DateTime.Now.Month-1;
             txtYil.Text = DateTime.Now.Year.ToString();
+            LoadChart();
         }
         
         private void CalculateAllGelirGider()
@@ -50,16 +51,53 @@ namespace MuhasebeApp.UserUI.Forms
 
         private void txtYil_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-    (e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
 
-            // only allow one decimal point
             if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void bntHesapla_Click(object sender, EventArgs e)
+        {
+            int monthId = Aylar.getAyByAd(cbxAy.Text).Id;
+            int year = Convert.ToInt32(txtYil.Text);
+            var result = _raporService.CalculataToplamGelirGiderByMonthAndYear(monthId,year);
+            if (result.Success)
+            {
+                lblAylikGelirMoney.Text = result.Data.ToplamGelir.ToString();
+                lblAylikGiderMoney.Text = result.Data.ToplamGider.ToString();
+                lblAylikKarMoney.Text = result.Data.ToplamKar.ToString();
+                lblAylikZararMoney.Text = result.Data.ToplamZarar.ToString();
+            }
+        }
+
+        private void LoadChart()
+        {
+            var result = _raporService.CalculateLastOneYearTotalGelirGider();
+            if (result.Success)
+            {
+                var resultList = result.Data.OrderBy(a => a.AyId).ToList();
+                foreach (var total in resultList)
+                {
+                    chartTotalByMonth.Series["Gelir"].Points.AddXY(total.AyAdi, total.ToplamGelir);
+                    chartTotalByMonth.Series["Gider"].Points.AddY(total.ToplamGider);
+
+                }
+            }
+
+            var malzemeResult = _raporService.CalculataTotalGelirByMalzemeName();
+            if (malzemeResult.Success)
+            {
+                var resultList = malzemeResult.Data.OrderBy(m => m.Total);
+                foreach (var malzeme in resultList)
+                {
+                    chartMalzemeByMonth.Series["AylikSatilanMalzemeler"].Points.AddXY(malzeme.MalzemeAdi, malzeme.Total);
+                }
             }
         }
     }

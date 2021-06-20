@@ -38,8 +38,8 @@ namespace MuhasebeApp.UserUI.Forms
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartTotalByMonth = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartMalzemeByMonth = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.gbxTotal = new System.Windows.Forms.GroupBox();
             this.lblToplamZararMoney = new System.Windows.Forms.Label();
             this.lblToplamZarar = new System.Windows.Forms.Label();
@@ -62,55 +62,62 @@ namespace MuhasebeApp.UserUI.Forms
             this.lblAylikGelirMoney = new System.Windows.Forms.Label();
             this.lblAylikGelir = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
+            this.lblAylikZararMoney = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.chartTotalByMonth)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartMalzemeByMonth)).BeginInit();
             this.gbxTotal.SuspendLayout();
             this.gbxAylikGelirGider.SuspendLayout();
             this.SuspendLayout();
             // 
-            // chart1
+            // chartTotalByMonth
             // 
+            chartArea1.AxisX.IsLabelAutoFit = false;
+            chartArea1.AxisX.LabelStyle.Font = new System.Drawing.Font("Times New Roman", 10F);
+            chartArea1.AxisX.LabelStyle.Interval = 0D;
+            chartArea1.AxisX.LabelStyle.IntervalOffset = 0D;
+            chartArea1.AxisX.LabelStyle.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Auto;
             chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
+            this.chartTotalByMonth.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(50, 321);
-            this.chart1.Name = "chart1";
+            this.chartTotalByMonth.Legends.Add(legend1);
+            this.chartTotalByMonth.Location = new System.Drawing.Point(50, 399);
+            this.chartTotalByMonth.Name = "chartTotalByMonth";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Gelir";
             series2.ChartArea = "ChartArea1";
             series2.Legend = "Legend1";
             series2.Name = "Gider";
-            this.chart1.Series.Add(series1);
-            this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(510, 310);
-            this.chart1.TabIndex = 0;
-            this.chart1.Text = "chartAylikGelirGider";
+            this.chartTotalByMonth.Series.Add(series1);
+            this.chartTotalByMonth.Series.Add(series2);
+            this.chartTotalByMonth.Size = new System.Drawing.Size(676, 310);
+            this.chartTotalByMonth.TabIndex = 0;
+            this.chartTotalByMonth.Text = "chartAylikGelirGider";
             title1.BackColor = System.Drawing.Color.White;
             title1.Name = "GelirGiderTitle";
             title1.Text = "Aylara Göre Son 1 Yıllık Gelir Gider";
-            this.chart1.Titles.Add(title1);
+            this.chartTotalByMonth.Titles.Add(title1);
             // 
-            // chart2
+            // chartMalzemeByMonth
             // 
             chartArea2.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea2);
+            this.chartMalzemeByMonth.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
-            this.chart2.Legends.Add(legend2);
-            this.chart2.Location = new System.Drawing.Point(640, 321);
-            this.chart2.Name = "chart2";
+            this.chartMalzemeByMonth.Legends.Add(legend2);
+            this.chartMalzemeByMonth.Location = new System.Drawing.Point(830, 399);
+            this.chartMalzemeByMonth.Name = "chartMalzemeByMonth";
             series3.ChartArea = "ChartArea1";
             series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
             series3.Legend = "Legend1";
-            series3.Name = "AylıkSatilanMalzemeler";
-            this.chart2.Series.Add(series3);
-            this.chart2.Size = new System.Drawing.Size(510, 310);
-            this.chart2.TabIndex = 1;
-            this.chart2.Text = "chart2";
+            series3.Name = "AylikSatilanMalzemeler";
+            this.chartMalzemeByMonth.Series.Add(series3);
+            this.chartMalzemeByMonth.Size = new System.Drawing.Size(510, 310);
+            this.chartMalzemeByMonth.TabIndex = 1;
+            this.chartMalzemeByMonth.Text = "chart2";
             title2.Name = "Title1";
             title2.Text = "Aylık Satılan Malzemeler";
-            this.chart2.Titles.Add(title2);
+            this.chartMalzemeByMonth.Titles.Add(title2);
             // 
             // gbxTotal
             // 
@@ -212,6 +219,8 @@ namespace MuhasebeApp.UserUI.Forms
             // 
             // gbxAylikGelirGider
             // 
+            this.gbxAylikGelirGider.Controls.Add(this.lblAylikZararMoney);
+            this.gbxAylikGelirGider.Controls.Add(this.label4);
             this.gbxAylikGelirGider.Controls.Add(this.bntHesapla);
             this.gbxAylikGelirGider.Controls.Add(this.txtYil);
             this.gbxAylikGelirGider.Controls.Add(this.label2);
@@ -224,7 +233,7 @@ namespace MuhasebeApp.UserUI.Forms
             this.gbxAylikGelirGider.Controls.Add(this.lblAylikGelirMoney);
             this.gbxAylikGelirGider.Controls.Add(this.lblAylikGelir);
             this.gbxAylikGelirGider.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.gbxAylikGelirGider.Location = new System.Drawing.Point(680, 30);
+            this.gbxAylikGelirGider.Location = new System.Drawing.Point(870, 30);
             this.gbxAylikGelirGider.Name = "gbxAylikGelirGider";
             this.gbxAylikGelirGider.Size = new System.Drawing.Size(470, 270);
             this.gbxAylikGelirGider.TabIndex = 3;
@@ -240,6 +249,7 @@ namespace MuhasebeApp.UserUI.Forms
             this.bntHesapla.TabIndex = 10;
             this.bntHesapla.Text = "Hesapla";
             this.bntHesapla.UseVisualStyleBackColor = true;
+            this.bntHesapla.Click += new System.EventHandler(this.bntHesapla_Click);
             // 
             // txtYil
             // 
@@ -344,7 +354,7 @@ namespace MuhasebeApp.UserUI.Forms
             // btnBack
             // 
             this.btnBack.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnBack.Location = new System.Drawing.Point(12, 624);
+            this.btnBack.Location = new System.Drawing.Point(12, 740);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(80, 25);
             this.btnBack.TabIndex = 19;
@@ -352,25 +362,45 @@ namespace MuhasebeApp.UserUI.Forms
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // lblAylikZararMoney
+            // 
+            this.lblAylikZararMoney.AutoSize = true;
+            this.lblAylikZararMoney.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblAylikZararMoney.Location = new System.Drawing.Point(161, 182);
+            this.lblAylikZararMoney.Name = "lblAylikZararMoney";
+            this.lblAylikZararMoney.Size = new System.Drawing.Size(19, 15);
+            this.lblAylikZararMoney.TabIndex = 12;
+            this.lblAylikZararMoney.Text = "00";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label4.Location = new System.Drawing.Point(56, 182);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(95, 17);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Toplam Zarar";
+            // 
             // Istatistik
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(1184, 661);
+            this.ClientSize = new System.Drawing.Size(1366, 777);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.gbxAylikGelirGider);
             this.Controls.Add(this.gbxTotal);
-            this.Controls.Add(this.chart2);
-            this.Controls.Add(this.chart1);
+            this.Controls.Add(this.chartMalzemeByMonth);
+            this.Controls.Add(this.chartTotalByMonth);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "Istatistik";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "İstatistik";
             this.Load += new System.EventHandler(this.Istatistik_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartTotalByMonth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartMalzemeByMonth)).EndInit();
             this.gbxTotal.ResumeLayout(false);
             this.gbxTotal.PerformLayout();
             this.gbxAylikGelirGider.ResumeLayout(false);
@@ -381,8 +411,8 @@ namespace MuhasebeApp.UserUI.Forms
 
         #endregion
 
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartTotalByMonth;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartMalzemeByMonth;
         private System.Windows.Forms.GroupBox gbxTotal;
         private System.Windows.Forms.Label lblToplamKarMoney;
         private System.Windows.Forms.Label lblKar;
@@ -405,5 +435,7 @@ namespace MuhasebeApp.UserUI.Forms
         private System.Windows.Forms.Label lblToplamZararMoney;
         private System.Windows.Forms.Label lblToplamZarar;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Label lblAylikZararMoney;
+        private System.Windows.Forms.Label label4;
     }
 }

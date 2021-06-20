@@ -35,9 +35,9 @@ namespace MuhasebeApp.UserUI.Forms
             if (!string.IsNullOrEmpty(cbxMalzemeAdi.Text))
             {
                 lblBirim.Text = _malzemeService.GetByName(cbxMalzemeAdi.Text).Data.Birim;
-            }            
-            dtpFStartDate.Value = new DateTime(2000,01,01);
-            dtpFEndDate.Value = new DateTime(2100,12,31);
+            }
+            dtpFStartDate.Value = new DateTime(2000, 01, 01);
+            dtpFEndDate.Value = new DateTime(2100, 12, 31);
             LoadGelir();
             dgwGelirListeleme.Width =
     dgwGelirListeleme.Columns.Cast<DataGridViewColumn>().Sum(x => x.Width)
@@ -50,60 +50,56 @@ namespace MuhasebeApp.UserUI.Forms
             if (result.Success)
             {
                 dgwGelirListeleme.DataSource = result.Data;
+                LoadField();
             }
         }
 
         private void dgwGelirListeleme_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgwGelirListeleme.Rows != null)
-            {
-
-                txtToplamTutar.Text = dgwGelirListeleme.CurrentRow.Cells[1].Value.ToString();
-                txtAlinanTutar.Text = dgwGelirListeleme.CurrentRow.Cells[2].Value.ToString();
-                dtpTarih.Value = SetDgwCellDate(dgwGelirListeleme.CurrentRow.Cells[3].Value.ToString());
-                cbxMalzemeAdi.Text = dgwGelirListeleme.CurrentRow.Cells[4].Value.ToString();
-                txtAdet.Text = dgwGelirListeleme.CurrentRow.Cells[5].Value.ToString();
-                cbxOdemeSekli.Text = dgwGelirListeleme.CurrentRow.Cells[6].Value.ToString();
-                txtAciklama.Text = dgwGelirListeleme.CurrentRow.Cells[7].Value.ToString();
-            }
+            LoadField();
         }
+
+
 
         private void btnGuncelle_Click(object sender, EventArgs e)
         {
-            if (ValidateChildren(ValidationConstraints.Enabled))
+            if (ValidationRules())
             {
                 validationError.Clear();
                 var malzeme = _malzemeService.GetByName(cbxMalzemeAdi.Text);
                 if (!malzeme.Success)
                 {
-                    MessageBox.Show(malzeme.Message);
+                    MessageBox.Show(malzeme.Message, "Muhsabe App", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {
                     var id = Convert.ToInt32(dgwGelirListeleme.CurrentRow.Cells[0].Value.ToString());
-                    var newGelir = new Gelir
+                    if (id > 0)
                     {
-                        MalzemeId = malzeme.Data.Id,
-                        Tarih = setDate(dtpTarih.Value),
-                        AlinanTutar = Convert.ToDecimal(txtAlinanTutar.Text),
-                        ToplamTutar = Convert.ToDecimal(txtToplamTutar.Text),
-                        Adet = Convert.ToInt32(txtAdet.Text),
-                        Aciklama = txtAciklama.Text,
-                        OdemeSekli = cbxOdemeSekli.Text
+                        var newGelir = new Gelir
+                        {
+                            MalzemeId = malzeme.Data.Id,
+                            Tarih = setDate(dtpTarih.Value),
+                            AlinanTutar = Convert.ToDecimal(txtAlinanTutar.Text),
+                            ToplamTutar = Convert.ToDecimal(txtToplamTutar.Text),
+                            Adet = Convert.ToInt32(txtAdet.Text),
+                            Aciklama = txtAciklama.Text,
+                            OdemeSekli = cbxOdemeSekli.Text
 
-                    };
-                    DialogResult secenek = MessageBox.Show("Güncellemek istiyor musunuz?", "Muhasebe App", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (secenek == DialogResult.Yes)
-                    {
-                        var result = _gelirService.UpdateById(id, newGelir);
-                        if (result.Success)
+                        };
+                        DialogResult secenek = MessageBox.Show("Güncellemek istiyor musunuz?", "Muhasebe App", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (secenek == DialogResult.Yes)
                         {
-                            MessageBox.Show(result.Message,"Muhasebe App",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                            LoadGelir();
-                        }
-                        else
-                        {
-                            MessageBox.Show(result.Message, "Muhasebe App", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            var result = _gelirService.UpdateById(id, newGelir);
+                            if (result.Success)
+                            {
+                                MessageBox.Show(result.Message, "Muhasebe App", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                LoadGelir();
+                            }
+                            else
+                            {
+                                MessageBox.Show(result.Message, "Muhasebe App", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                     }
                 }
@@ -141,8 +137,8 @@ namespace MuhasebeApp.UserUI.Forms
         {
             var gelirFilterDto = new GelirFilterDto
             {
-                MalzemeAd = cbxFMalzemeAdi.Text ?? " ",
-                OdemeSekli = cbxFOdemeSekli.Text ?? " ",
+                MalzemeAd = cbxFMalzemeAdi.Text,
+                OdemeSekli = cbxFOdemeSekli.Text,
                 StartDate = dtpFStartDate.Value,
                 EndDate = dtpFEndDate.Value
             };
@@ -156,7 +152,7 @@ namespace MuhasebeApp.UserUI.Forms
                 }
                 else
                 {
-                    MessageBox.Show("Belirttiğiniz filtrelere uygun bir nesne bulunamadı");
+                    MessageBox.Show("Belirttiğiniz filtrelere uygun bir içerik bulunamadı");
                 }
             }
         }
@@ -177,13 +173,11 @@ namespace MuhasebeApp.UserUI.Forms
 
         private void txtAdet_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-     (e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
 
-            // only allow one decimal point
             if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
             {
                 e.Handled = true;
@@ -192,37 +186,33 @@ namespace MuhasebeApp.UserUI.Forms
 
         private void txtAlinanTutar_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-    (e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
 
-            // only allow one decimal point
             if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
             {
                 e.Handled = true;
             }
         }
-
-        private void txtAdet_Validating(object sender, CancelEventArgs e)
+        private bool ValidationRules()
         {
             if (string.IsNullOrEmpty(txtAdet.Text))
             {
-                e.Cancel = true;
                 txtAdet.Focus();
                 validationError.SetError(txtAdet, "Adet Boş Bırakılamaz!");
+                return false;
             }
-        }
 
-        private void txtAlinanTutar_Validating(object sender, CancelEventArgs e)
-        {
             if (string.IsNullOrEmpty(txtAlinanTutar.Text))
             {
-                e.Cancel = true;
                 txtAlinanTutar.Focus();
                 validationError.SetError(txtAlinanTutar, "Alınan Tutar Boş Bırakılamaz!");
+                return false;
             }
+
+            return true;
         }
 
         private DateTime SetDgwCellDate(string dateCell)
@@ -240,6 +230,19 @@ namespace MuhasebeApp.UserUI.Forms
             return list;
         }
 
+        private void LoadField()
+        {
+            if (dgwGelirListeleme.CurrentRow != null)
+            {
+                txtToplamTutar.Text = dgwGelirListeleme.CurrentRow.Cells[1].Value.ToString();
+                txtAlinanTutar.Text = dgwGelirListeleme.CurrentRow.Cells[2].Value.ToString();
+                dtpTarih.Value = SetDgwCellDate(dgwGelirListeleme.CurrentRow.Cells[3].Value.ToString());
+                cbxMalzemeAdi.Text = dgwGelirListeleme.CurrentRow.Cells[4].Value.ToString();
+                txtAdet.Text = dgwGelirListeleme.CurrentRow.Cells[5].Value.ToString();
+                cbxOdemeSekli.Text = dgwGelirListeleme.CurrentRow.Cells[6].Value.ToString();
+                txtAciklama.Text = dgwGelirListeleme.CurrentRow.Cells[7].Value.ToString();
+            }
+        }
 
 
         private DateTime setDate(DateTime date)

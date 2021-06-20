@@ -95,7 +95,7 @@ namespace Business.Concrete
             if (!existMalzeme.Ad.Equals(malzeme.Ad) && !String.IsNullOrEmpty(malzeme.Ad))
             {
                 Malzeme existMalzemeName = _malzemeDal.Get(m => m.Ad == malzeme.Ad.ToUpper());
-                if (existMalzeme != null)
+                if (existMalzemeName != null)
                 {
                     return new ErrorResult("Bu malzeme ismi kullanılmaktadır!");
                 }

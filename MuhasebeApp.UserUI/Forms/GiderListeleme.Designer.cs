@@ -63,11 +63,14 @@ namespace MuhasebeApp.UserUI.Forms
             // 
             // dgwGiderListeleme
             // 
+            this.dgwGiderListeleme.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgwGiderListeleme.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgwGiderListeleme.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgwGiderListeleme.Location = new System.Drawing.Point(159, 32);
             this.dgwGiderListeleme.Name = "dgwGiderListeleme";
             this.dgwGiderListeleme.ReadOnly = true;
+            this.dgwGiderListeleme.RowHeadersVisible = false;
+            this.dgwGiderListeleme.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgwGiderListeleme.Size = new System.Drawing.Size(548, 150);
             this.dgwGiderListeleme.TabIndex = 0;
             this.dgwGiderListeleme.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwGiderListeleme_CellClick);
@@ -150,7 +153,6 @@ namespace MuhasebeApp.UserUI.Forms
             this.txtToplamTutar.Size = new System.Drawing.Size(100, 21);
             this.txtToplamTutar.TabIndex = 5;
             this.txtToplamTutar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtToplamTutar_KeyPress);
-            this.txtToplamTutar.Validating += new System.ComponentModel.CancelEventHandler(this.txtToplamTutar_Validating);
             // 
             // txtIcerik
             // 
@@ -159,7 +161,6 @@ namespace MuhasebeApp.UserUI.Forms
             this.txtIcerik.Name = "txtIcerik";
             this.txtIcerik.Size = new System.Drawing.Size(200, 21);
             this.txtIcerik.TabIndex = 4;
-            this.txtIcerik.Validating += new System.ComponentModel.CancelEventHandler(this.txtIcerik_Validating);
             // 
             // lblAciklama
             // 

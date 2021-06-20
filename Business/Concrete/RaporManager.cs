@@ -27,10 +27,21 @@ namespace Business.Concrete
 
         public IDataResult<ToplamGelirGiderDto> CalculataToplamGelirGiderByMonthAndYear(int monthId, int year)
         {
-            var gelirQuery = string.Format("SELECT SUM(toplam_tutar) AS total FROM gelir WHERE DATE_PART('month',tarih) = {0} AND DATE_PART('year', tarih) = {1};", monthId, year);
-            var toplamGelir = _gelirDal.GetTotalMoney(gelirQuery);
-            var giderQuery = string.Format("SELECT SUM(toplam_tutar) AS total FROM gider WHERE DATE_PART('month',tarih) = {0} AND DATE_PART('year', tarih) = {1};", monthId, year);
-            var toplamGider = _gelirDal.GetTotalMoney(giderQuery);
+            decimal toplamGelir = 0;
+
+            var gelirList = _gelirDal.GetList(g => g.Tarih.Month == monthId && g.Tarih.Year == year);
+            foreach (var gelir in gelirList)
+            {
+                toplamGelir += gelir.AlinanTutar;
+            }
+
+            decimal toplamGider = 0;
+
+            var giderList = _giderDal.GetList(g => g.Tarih.Month == monthId && g.Tarih.Year == year);
+            foreach (var gider in giderList)
+            {
+                toplamGider += gider.ToplamTutar;
+            }
 
             decimal kar = 0;
             decimal zarar = 0;
@@ -55,8 +66,9 @@ namespace Business.Concrete
 
         public IDataResult<List<V_Malzeme_Chart>> CalculataTotalGelirByMalzemeName()
         {
-            //aylık olarak düzenlenecek
-            var malzemeChartList = _malzemeChartDal.GetList();
+            var currentDate = DateTime.Now;
+
+            var malzemeChartList = _malzemeChartDal.GetList(m => m.Tarih.Month == currentDate.Month && m.Tarih.Year == currentDate.Year);
             return new SuccessDataResult<List<V_Malzeme_Chart>>(malzemeChartList);
         }
 
@@ -67,22 +79,34 @@ namespace Business.Concrete
             var yillikChartList = new List<YillikChartToplamGelirGiderDto>();
             for (int i = 0; i < 12; i++)
             {
-                var gelirQuery = string.Format("SELECT SUM(toplam_tutar) AS total FROM gelir WHERE DATE_PART('month',tarih) = {0} AND DATE_PART('year', tarih) = {1};", startDate.Month, startDate.Year);
-                var toplamGelir = _gelirDal.GetTotalMoney(gelirQuery);
-                var giderQuery = string.Format("SELECT SUM(toplam_tutar) AS total FROM gider WHERE DATE_PART('month',tarih) = {0} AND DATE_PART('year', tarih) = {1};", startDate.Month, startDate.Year);
-                var toplamGider = _gelirDal.GetTotalMoney(giderQuery);
+      
+                decimal toplamGelir = 0;
+
+                var gelirList = _gelirDal.GetList(g => g.Tarih.Month == startDate.Month && g.Tarih.Year == startDate.Year);
+                foreach (var gelir in gelirList)
+                {
+                    toplamGelir += gelir.AlinanTutar;
+                }
+
+                decimal toplamGider = 0;
+
+                var giderList = _giderDal.GetList(g => g.Tarih.Month == startDate.Month && g.Tarih.Year == startDate.Year);
+                foreach (var gider in giderList)
+                {
+                    toplamGider += gider.ToplamTutar;
+                }
                 var yillikCart = new YillikChartToplamGelirGiderDto
                 {
 
                     ToplamGelir = toplamGelir,
                     ToplamGider = toplamGider,
-                    AyAdi = Aylar.getAyById(startDate.Month).Adi
+                    AyAdi = Aylar.getAyById(startDate.Month).Adi,
+                    AyId = startDate.Month
                 };
                 yillikChartList.Add(yillikCart);
 
                 startDate = startDate.AddMonths(-1);
             }
-
             return new SuccessDataResult<List<YillikChartToplamGelirGiderDto>>(yillikChartList);
 
 
@@ -90,10 +114,23 @@ namespace Business.Concrete
 
         public IDataResult<ToplamGelirGiderDto> CalculateToplamGelirGider()
         {
-            var queryGelir = string.Format("SELECT SUM(toplam_tutar) AS total FROM gelir;");
-            var totalGelirMoney = _gelirDal.GetTotalMoney(queryGelir);
-            var queryGider = string.Format("SELECT SUM(toplam_tutar) AS total FROM gider;");
-            var totalGiderMoney = _giderDal.GetTotalMoney(queryGelir);
+
+
+            List<Gelir> gelirList = _gelirDal.GetList();
+            decimal totalGelirMoney = 0;
+            decimal totalGiderMoney = 0;
+
+            foreach (var gelir in gelirList)
+            {
+                totalGelirMoney += gelir.AlinanTutar;
+            }
+
+            List<Gider> giderList = _giderDal.GetList();
+            foreach (var gider in giderList)
+            {
+                totalGiderMoney += gider.ToplamTutar;
+            }
+
             decimal kar = 0;
             decimal zarar = 0;
             if (totalGiderMoney > totalGelirMoney)
@@ -115,5 +152,6 @@ namespace Business.Concrete
 
             return new SuccessDataResult<ToplamGelirGiderDto>(toplamGelirGiderDto);
         }
+
     }
 }

@@ -11,5 +11,6 @@ namespace DataAccess.Concrete
 {
     public class EfGelirDal : EntityRepositoryBase<Gelir, PgDbContext>, IGelirDal
     {
+ 
     }
 }

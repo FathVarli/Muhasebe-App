@@ -17,8 +17,6 @@ namespace MuhasebeApp.UserUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new HomePage());
-
             Application.Run(new Giris());
         }
     }

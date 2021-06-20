@@ -37,13 +37,13 @@ namespace MuhasebeApp.UserUI.Forms
 
         private void btnKaydet_Click(object sender, EventArgs e)
         {
-            if (ValidateChildren(ValidationConstraints.Enabled))
+            if (ValidationRules())
             {
                 validationError.Clear();
                 var malzeme = _malzemeService.GetByName(cbxMalzemeAdi.Text);
                 if (!malzeme.Success)
                 {
-                    MessageBox.Show(malzeme.Message);
+                    MessageBox.Show(malzeme.Message, "Muhasabe App", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {
@@ -60,20 +60,26 @@ namespace MuhasebeApp.UserUI.Forms
 
                     };
                     var result = _gelirService.Add(newGelir);
-                    MessageBox.Show(result.Message);
+                    if (result.Success)
+                    {
+                        MessageBox.Show(result.Message, "Muhasabe App", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ClearField();
+                    }
+                    else
+                    {
+                        MessageBox.Show(result.Message, "Muhasabe App", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
             }
         }
 
         private void txtAlinanTutar_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-     (e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
 
-            // only allow one decimal point
             if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
             {
                 e.Handled = true;
@@ -82,13 +88,11 @@ namespace MuhasebeApp.UserUI.Forms
 
         private void txtAdet_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-        (e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
 
-            // only allow one decimal point
             if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
             {
                 e.Handled = true;
@@ -122,30 +126,34 @@ namespace MuhasebeApp.UserUI.Forms
             return list;
         }
 
+        private void ClearField()
+        {
+            txtAlinanTutar.Clear();
+            txtToplamTutar.Clear();
+            txtAciklama.Clear();
+        }
 
         private DateTime setDate(DateTime date)
         {
             return new DateTime(date.Year, date.Month, date.Day);
         }
 
-        private void txtAdet_Validating(object sender, CancelEventArgs e)
+        private bool ValidationRules()
         {
             if (string.IsNullOrEmpty(txtAdet.Text))
             {
-                e.Cancel = true;
                 txtAdet.Focus();
                 validationError.SetError(txtAdet, "Adet Boş Bırakılamaz!");
+                return false;
             }
-        }
-
-        private void txtAlinanTutar_Validating(object sender, CancelEventArgs e)
-        {
             if (string.IsNullOrEmpty(txtAlinanTutar.Text))
             {
-                e.Cancel = true;
                 txtAlinanTutar.Focus();
                 validationError.SetError(txtAlinanTutar, "Alınan Tutar Boş Bırakılamaz!");
+                return false;
             }
+
+            return true;
         }
 
         private void btnBack_Click(object sender, EventArgs e)

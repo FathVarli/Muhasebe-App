@@ -155,7 +155,6 @@ namespace MuhasebeApp.UserUI.Forms
             this.txtAdet.TabIndex = 9;
             this.txtAdet.TextChanged += new System.EventHandler(this.txtAdet_TextChanged);
             this.txtAdet.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAdet_KeyPress);
-            this.txtAdet.Validating += new System.ComponentModel.CancelEventHandler(this.txtAdet_Validating);
             // 
             // txtToplamTutar
             // 
@@ -193,7 +192,6 @@ namespace MuhasebeApp.UserUI.Forms
             this.txtAlinanTutar.Size = new System.Drawing.Size(64, 21);
             this.txtAlinanTutar.TabIndex = 15;
             this.txtAlinanTutar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAlinanTutar_KeyPress);
-            this.txtAlinanTutar.Validating += new System.ComponentModel.CancelEventHandler(this.txtAlinanTutar_Validating);
             // 
             // txtAciklama
             // 

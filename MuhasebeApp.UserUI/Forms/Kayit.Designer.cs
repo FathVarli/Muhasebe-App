@@ -29,6 +29,7 @@ namespace MuhasebeApp.UserUI.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtSifre = new System.Windows.Forms.TextBox();
@@ -38,6 +39,8 @@ namespace MuhasebeApp.UserUI.Forms
             this.txtSoyad = new System.Windows.Forms.TextBox();
             this.txtAd = new System.Windows.Forms.TextBox();
             this.btnKaydet = new System.Windows.Forms.Button();
+            this.validationError = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.validationError)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -125,6 +128,10 @@ namespace MuhasebeApp.UserUI.Forms
             this.btnKaydet.UseVisualStyleBackColor = false;
             this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
             // 
+            // validationError
+            // 
+            this.validationError.ContainerControl = this;
+            // 
             // Kayit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -145,6 +152,7 @@ namespace MuhasebeApp.UserUI.Forms
             this.Name = "Kayit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Kayit";
+            ((System.ComponentModel.ISupportInitialize)(this.validationError)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -161,5 +169,6 @@ namespace MuhasebeApp.UserUI.Forms
         private System.Windows.Forms.TextBox txtSoyad;
         private System.Windows.Forms.TextBox txtAd;
         private System.Windows.Forms.Button btnKaydet;
+        private System.Windows.Forms.ErrorProvider validationError;
     }
 }

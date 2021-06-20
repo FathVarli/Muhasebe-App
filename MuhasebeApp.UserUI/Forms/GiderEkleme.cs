@@ -24,7 +24,7 @@ namespace MuhasebeApp.UserUI.Forms
 
         private void btnKaydet_Click(object sender, EventArgs e)
         {
-            if (ValidateChildren(ValidationConstraints.Enabled))
+            if (ValidationRules())
             {
                 validationError.Clear();
 
@@ -37,45 +37,47 @@ namespace MuhasebeApp.UserUI.Forms
                 };
 
                 var result = _giderService.Add(newGider);
-                MessageBox.Show(result.Message);
+                if (result.Success)
+                {
+                    MessageBox.Show(result.Message, "Muhasabe App", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show(result.Message, "Muhasabe App", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
 
         private void txtToplamTutar_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-    (e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
 
-            // only allow one decimal point
             if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
             {
                 e.Handled = true;
             }
         }
 
-        private void txtIcerik_Validating(object sender, CancelEventArgs e)
+        private bool ValidationRules()
         {
             if (string.IsNullOrEmpty(txtIcerik.Text))
             {
-                e.Cancel = true;
                 txtIcerik.Focus();
                 validationError.SetError(txtIcerik, "İçerik Alanı Boş Bırakılamaz!");
+                return false;
             }
-        }
 
-        private void txtToplamTutar_Validating(object sender, CancelEventArgs e)
-        {
             if (string.IsNullOrEmpty(txtToplamTutar.Text))
             {
-                e.Cancel = true;
                 txtToplamTutar.Focus();
                 validationError.SetError(txtToplamTutar, "Toplam Tutar Boş Bırakılamaz!");
+                return false;
             }
+            return true;
         }
-
 
         private DateTime setDate(DateTime date)
         {

@@ -113,7 +113,6 @@ namespace MuhasebeApp.UserUI.Forms
             this.txtToplamTutar.Size = new System.Drawing.Size(100, 21);
             this.txtToplamTutar.TabIndex = 5;
             this.txtToplamTutar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtToplamTutar_KeyPress);
-            this.txtToplamTutar.Validating += new System.ComponentModel.CancelEventHandler(this.txtToplamTutar_Validating);
             // 
             // txtIcerik
             // 
@@ -122,7 +121,6 @@ namespace MuhasebeApp.UserUI.Forms
             this.txtIcerik.Name = "txtIcerik";
             this.txtIcerik.Size = new System.Drawing.Size(200, 21);
             this.txtIcerik.TabIndex = 4;
-            this.txtIcerik.Validating += new System.ComponentModel.CancelEventHandler(this.txtIcerik_Validating);
             // 
             // lblAciklama
             // 

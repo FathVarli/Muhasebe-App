@@ -33,25 +33,50 @@ namespace MuhasebeApp.UserUI.Forms
 
         private void btnGiris_Click(object sender, EventArgs e)
         {
-            var loginDto = new LoginDto
+            if (ValidationRules())
             {
-                Tc = txtTc.Text,
-                Sifre = txtSifre.Text.Trim()
-            };
+                var loginDto = new LoginDto
+                {
+                    Tc = txtTc.Text,
+                    Sifre = txtSifre.Text.Trim()
+                };
 
-            var result = _kullaniciService.Login(loginDto);
-            if (result.Success)
-            {
-                HomePage hPage = new HomePage();
-                hPage.Show();
-                this.Hide();
-            }
-            else
-            {
-                MessageBox.Show(result.Message,"Muhasebe App", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                var result = _kullaniciService.Login(loginDto);
+                if (result.Success)
+                {
+                    HomePage hPage = new HomePage();
+                    hPage.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show(result.Message, "Muhasebe App", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
 
+        private bool ValidationRules()
+        {
+            if (string.IsNullOrEmpty(txtTc.Text))
+            {
+                txtTc.Focus();
+                validationError.SetError(txtTc, "Tc Alanı Boş Bırakılamaz!");
+                return false;
+            }
+            if (txtTc.Text.Length != 11)
+            {
+                txtTc.Focus();
+                validationError.SetError(txtTc, "TC Numarası 11 Haneli Olmalıdır.");
+                return false;
+            }
+            if (string.IsNullOrEmpty(txtSifre.Text))
+            {
+                txtSifre.Focus();
+                validationError.SetError(txtSifre, "Şifre Alanı Boş Bırakılamaz!");
+                return false;
+            }
+            return true;
+        }
         private void btnKayit_Click(object sender, EventArgs e)
         {
             Kayit kayit = new Kayit();

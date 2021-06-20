@@ -25,7 +25,7 @@ namespace MuhasebeApp.UserUI.Forms
         private void GiderListeleme_Load(object sender, EventArgs e)
         {
             dtpFStartDate.Value = new DateTime(2000, 01, 01);
-            dtpFEndDate.Value = new DateTime(2100, 12, 31);            
+            dtpFEndDate.Value = new DateTime(2100, 12, 31);
             LoadGider();
             dgwGiderListeleme.Width =
     dgwGiderListeleme.Columns.Cast<DataGridViewColumn>().Sum(x => x.Width)
@@ -38,12 +38,18 @@ namespace MuhasebeApp.UserUI.Forms
             if (result.Success)
             {
                 dgwGiderListeleme.DataSource = result.Data;
+                LoadField();
             }
         }
 
         private void dgwGiderListeleme_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgwGiderListeleme.Rows != null)
+            LoadField();
+        }
+
+        private void LoadField()
+        {
+            if (dgwGiderListeleme.CurrentRow != null)
             {
                 txtIcerik.Text = dgwGiderListeleme.CurrentRow.Cells[1].Value.ToString();
                 txtToplamTutar.Text = dgwGiderListeleme.CurrentRow.Cells[2].Value.ToString();
@@ -53,34 +59,36 @@ namespace MuhasebeApp.UserUI.Forms
         }
 
 
-
         private void btnGüncelle_Click(object sender, EventArgs e)
         {
-            if (ValidateChildren(ValidationConstraints.Enabled))
+            if (ValidationRules())
             {
                 validationError.Clear();
-                var id = Convert.ToInt32(dgwGiderListeleme.CurrentRow.Cells[0].Value.ToString());
-                if (id > 0)
+                if (dgwGiderListeleme.CurrentRow != null)
                 {
-                    var newGider = new Gider
+                    var id = Convert.ToInt32(dgwGiderListeleme.CurrentRow.Cells[0].Value.ToString());
+                    if (id > 0)
                     {
-                        Icerik = txtIcerik.Text,
-                        ToplamTutar = Convert.ToDecimal(txtToplamTutar.Text),
-                        Tarih = setDate(dtpTarih.Value),
-                        Aciklama = txtAciklama.Text
-                    };
-                    DialogResult secenek = MessageBox.Show("Güncellemek istiyor musunuz?", "Muhasebe App", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (secenek == DialogResult.Yes)
-                    {
-                        var result = _giderService.UpdateById(id, newGider);
-                        if (result.Success)
+                        var newGider = new Gider
                         {
-                            MessageBox.Show(result.Message, "Muhasebe App", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            LoadGider();
-                        }
-                        else
+                            Icerik = txtIcerik.Text,
+                            ToplamTutar = Convert.ToDecimal(txtToplamTutar.Text),
+                            Tarih = setDate(dtpTarih.Value),
+                            Aciklama = txtAciklama.Text
+                        };
+                        DialogResult secenek = MessageBox.Show("Güncellemek istiyor musunuz?", "Muhasebe App", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (secenek == DialogResult.Yes)
                         {
-                            MessageBox.Show(result.Message, "Muhasebe App", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            var result = _giderService.UpdateById(id, newGider);
+                            if (result.Success)
+                            {
+                                MessageBox.Show(result.Message, "Muhasebe App", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                LoadGider();
+                            }
+                            else
+                            {
+                                MessageBox.Show(result.Message, "Muhasebe App", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                     }
                 }
@@ -130,7 +138,7 @@ namespace MuhasebeApp.UserUI.Forms
                 }
                 else
                 {
-                    MessageBox.Show("Belirttiğiniz filtrelere uygun bir nesne bulunamadı", "Muhasebe App", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Belirttiğiniz filtrelere uygun bir içerik bulunamadı", "Muhasebe App", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
@@ -153,35 +161,30 @@ namespace MuhasebeApp.UserUI.Forms
             return date;
         }
 
-        private void txtIcerik_Validating(object sender, CancelEventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtIcerik.Text))
-            {
-                e.Cancel = true;
-                txtIcerik.Focus();
-                validationError.SetError(txtIcerik, "İçerik Alanı Boş Bırakılamaz!");
-            }
-        }
-
-        private void txtToplamTutar_Validating(object sender, CancelEventArgs e)
+        public bool ValidationRules()
         {
             if (string.IsNullOrEmpty(txtToplamTutar.Text))
             {
-                e.Cancel = true;
                 txtIcerik.Focus();
                 validationError.SetError(txtToplamTutar, "Toplam Tutar Alanı Boş Bırakılamaz!");
+                return false;
             }
+            if (string.IsNullOrEmpty(txtIcerik.Text))
+            {
+                txtIcerik.Focus();
+                validationError.SetError(txtIcerik, "İçerik Alanı Boş Bırakılamaz!");
+                return false;
+            }
+            return true;
         }
 
         private void txtToplamTutar_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-(e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
 
-            // only allow one decimal point
             if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
             {
                 e.Handled = true;
