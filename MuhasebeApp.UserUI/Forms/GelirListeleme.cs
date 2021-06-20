@@ -215,6 +215,20 @@ namespace MuhasebeApp.UserUI.Forms
             return true;
         }
 
+        private void txtAdet_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtAdet.Text) && !string.IsNullOrEmpty(cbxMalzemeAdi.Text))
+            {
+                var malzeme = _malzemeService.GetByName(cbxMalzemeAdi.Text).Data;
+                decimal toplamTutar = Convert.ToInt32(txtAdet.Text) * malzeme.BirimFiyat;
+                txtToplamTutar.Text = toplamTutar.ToString();
+            }
+            else
+            {
+                txtToplamTutar.Text = "";
+            }
+        }
+
         private DateTime SetDgwCellDate(string dateCell)
         {
             var stringDateArr = dateCell.Split(' ');
@@ -256,5 +270,7 @@ namespace MuhasebeApp.UserUI.Forms
             gelirHub.Show();
             this.Hide();
         }
+
+      
     }
 }

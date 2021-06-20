@@ -101,7 +101,7 @@ namespace MuhasebeApp.UserUI.Forms
 
         private void txtAdet_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtAdet.Text))
+            if (!string.IsNullOrEmpty(txtAdet.Text) && !string.IsNullOrEmpty(cbxMalzemeAdi.Text))
             {
                 var malzeme = _malzemeService.GetByName(cbxMalzemeAdi.Text).Data;
                 decimal toplamTutar = Convert.ToInt32(txtAdet.Text) * malzeme.BirimFiyat;

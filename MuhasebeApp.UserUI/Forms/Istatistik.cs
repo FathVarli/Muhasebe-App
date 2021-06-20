@@ -100,5 +100,6 @@ namespace MuhasebeApp.UserUI.Forms
                 }
             }
         }
+
     }
 }

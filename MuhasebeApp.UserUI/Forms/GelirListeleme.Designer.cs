@@ -165,6 +165,7 @@ namespace MuhasebeApp.UserUI.Forms
             this.txtAdet.Name = "txtAdet";
             this.txtAdet.Size = new System.Drawing.Size(64, 21);
             this.txtAdet.TabIndex = 44;
+            this.txtAdet.TextChanged += new System.EventHandler(this.txtAdet_TextChanged);
             this.txtAdet.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAdet_KeyPress);
             // 
             // txtAciklama
