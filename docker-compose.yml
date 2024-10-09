@@ -1,0 +1,21 @@
+version: '3.5'
+
+services:
+  muhasebe-app-db:
+    image: postgres:latest
+    container_name: muhasebe-app-db
+    extra_hosts:
+      - "pg-0:127.0.0.1"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: Muhasebe_Db
+    ports:
+      - "5432:5432"
+    restart: always
+    networks:
+      - robotnet
+  
+networks:
+  robotnet:
+    driver: bridge
